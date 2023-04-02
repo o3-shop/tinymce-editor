@@ -1,21 +1,25 @@
 {
-  "name": "vanilla-thunder/oxid-module-tinymce",
-  "version": "3.0",
-  "description": "TinyMCE 5 Integration for OXID eShop V6.2",
+  "name": "o3-shop/tinymce-editor",
+  "version": "1.0",
+  "description": "TinyMCE 5 Integration for O3-Shop",
   "type": "oxideshop-module",
-  "homepage": "https://github.com/vanilla-thunder/oxid-module-tinymce",
+  "homepage": "https://www.o3-shop.com/",
   "license": [
     "GPL-3.0"
   ],
   "authors": [
     {
-      "name": "Marat Bedoev",
+      "name": "Marat Bedoev, bestlife AG",
       "email": "hello@mb-dev.pro"
+    },
+    {
+      "name": "O3-Shop",
+      "email": "info@o3-shop.com"
     }
   ],
   "extra": {
     "oxideshop": {
-      "target-directory": "vt/TinyMCE"
+      "target-directory": "o3-shop/tinymce-editor"
     }
   },
   "archive": {
@@ -23,11 +27,11 @@
   },
   "require": {
     "php": ">=7.0",
-    "oxid-esales/oxideshop-ce": "^v6.2"
+    "o3-shop/shop-ce": "^1.0"
   },
   "autoload": {
     "psr-4": {
-      "VanillaThunder\\TinyMCE\\": "../../../source/modules/vt/TinyMCE"
+      "VanillaThunder\\TinyMCE\\": "../../../source/modules/o3-shop/tinymce-editor"
     }
   }
 }
