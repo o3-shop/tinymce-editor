@@ -37,8 +37,8 @@ $aModule = [
         'tinyhelper' => O3\TinyMCE\Application\Controller\Admin\TinyHelper::class
     ],
     'templates' => [
-        'tiny/filemanager.tpl' => 'vt/TinyMCE/Application/views/admin/filemanager.tpl',
-        'tiny/helper.tpl' => 'vt/TinyMCE/Application/views/admin/helper.tpl'
+        'TinyFilemanager.tpl'   => 'o3-shop/tinymce-editor/Application/views/admin/filemanager.tpl',
+        'TinyHelper.tpl'        => 'o3-shop/tinymce-editor/Application/views/admin/helper.tpl'
     ],
     'blocks' => [
         [

@@ -71,14 +71,13 @@ class ViewConfig extends ViewConfig_parent
         );
         $sLang = $aLang[$oLang->getLanguageAbbr($oLang->getTplLanguage())] ?? "en";
 
-
         // processing editor config & other stuff
 
         // default config, updated on 2021-10-10 according to
         $aConfig = array(
             // integration options https://www.tiny.cloud/docs/configure/integration-and-setup/
             // 'auto_focus' => '', // don't think we need me, maybe for cms pages?
-            'base_url' => q($this->getBaseDir().'modules/vt/TinyMCE/out/tinymce/'),
+            'base_url' => q($this->getBaseDir().'modules/o3-shop/tinymce-editor/out/tinymce/'),
             'cache_suffix' => q('?v=20211010'),
             'selector' => '"textarea:not(.mceNoEditor)"',
 
@@ -188,7 +187,7 @@ class ViewConfig extends ViewConfig_parent
 
         // external plugins
         $aConfig['external_plugins'] = '{ "oxfullscreen":"' . $this->getModuleUrl(
-                'vt-tinymce',
+                'tinymce-editor',
                 'out/plugins/oxfullscreen/plugin.js'
             ) . '" ';
         //$aConfig['external_plugins'] .= ', "oxwidget":"' . $this->getModuleUrl('bla-tinymce', 'plugins/oxwidget/plugin.js') . '" ';
@@ -204,7 +203,7 @@ class ViewConfig extends ViewConfig_parent
             Registry::get(UtilsServer::class)->setOxCookie("filemanagerkey", $sFilemanagerKey);
 
             $aConfig['external_plugins'] .= ',"roxy":' . q($this->getModuleUrl(
-                    'vt-tinymce',
+                    'tinymce-editor',
                     'out/plugins/roxy/plugin.js'
                 ));
         }
@@ -278,7 +277,7 @@ copyLongDesc = function(sIdent) {
 }';
 
         // adding scripts to template
-        $smarty = Registry::get("oxUtilsView")->getSmarty();
+        $smarty = Registry::getUtilsView()->getSmarty();
         $sSufix = ($smarty->_tpl_vars["__oxid_include_dynamic"]) ? '_dynamic' : '';
 
         $aScript = (array)$cfg->getGlobalParameter('scripts' . $sSufix);
@@ -296,7 +295,7 @@ copyLongDesc = function(sIdent) {
             }
         }
 
-        $aInclude[3][] = $this->getModuleUrl('vt-tinymce', 'out/tinymce/tinymce.min.js');
+        $aInclude[3][] = $this->getModuleUrl('tinymce-editor', 'out/tinymce/tinymce.min.js');
         $cfg->setGlobalParameter('includes' . $sSufix, $aInclude);
 
         return '<li style="margin-left: 50px;"><button style="border: 1px solid #0089EE; color: #0089EE;padding: 3px 10px; margin-top: -10px; background: white;" ' .

@@ -26,7 +26,7 @@ use OxidEsales\Eshop\Core\Output;
 
 class TinyHelper extends AdminController
 {
-    protected $_sThisTemplate = "tiny/helper.tpl";
+    protected $_sThisTemplate = "TinyHelper.tpl";
 
     protected $_errors;
     protected $_content;

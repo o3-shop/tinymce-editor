@@ -19,6 +19,10 @@
   ],
   "extra": {
     "oxideshop": {
+      "blacklist-filter": [
+        "composer.json",
+        "README.md"
+      ],
       "target-directory": "o3-shop/tinymce-editor"
     }
   },
