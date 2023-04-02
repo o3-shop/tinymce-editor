@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "VanillaThunder\\TinyMCE\\": "../../../source/modules/o3-shop/tinymce-editor"
+      "O3\\TinyMCE\\": "../../../source/modules/o3-shop/tinymce-editor"
     }
   }
 }

@@ -30,11 +30,11 @@ $aModule = [
     'author' => 'Marat Bedoev, O3-Shop',
     'url' => 'https://www.o3-shop.com/',
     'extend' => [
-        OxidEsales\Eshop\Core\ViewConfig::class => VanillaThunder\TinyMCE\Application\Core\ViewConfig::class
+        OxidEsales\Eshop\Core\ViewConfig::class => O3\TinyMCE\Application\Core\ViewConfig::class
     ],
     'controllers' => [
-        'tinyfilemanager' => VanillaThunder\TinyMCE\Application\Controller\Admin\TinyFileManager::class,
-        'tinyhelper' => VanillaThunder\TinyMCE\Application\Controller\Admin\TinyHelper::class
+        'tinyfilemanager' => O3\TinyMCE\Application\Controller\Admin\TinyFileManager::class,
+        'tinyhelper' => O3\TinyMCE\Application\Controller\Admin\TinyHelper::class
     ],
     'templates' => [
         'tiny/filemanager.tpl' => 'vt/TinyMCE/Application/views/admin/filemanager.tpl',

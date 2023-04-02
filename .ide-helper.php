@@ -19,7 +19,9 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-namespace VanillaThunder\TinyMCE\Application\Core;
+namespace O3\TinyMCE\Application\Core {
 
+    use OxidEsales\Eshop\Core\ViewConfig;
 
-class_alias(\OxidEsales\EshopCommunity\Core\ViewConfig::class,"VanillaThunder\TinyMCE\Application\Core\ViewConfig_parent");
+    class ViewConfig_parent extends ViewConfig {}
+}

@@ -19,10 +19,12 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-namespace VanillaThunder\TinyMCE\Application\Controller\Admin;
+namespace O3\TinyMCE\Application\Controller\Admin;
 
+use OxidEsales\Eshop\Application\Controller\Admin\AdminController;
+use OxidEsales\Eshop\Core\Output;
 
-class TinyHelper extends \OxidEsales\Eshop\Application\Controller\Admin\AdminController
+class TinyHelper extends AdminController
 {
     protected $_sThisTemplate = "tiny/helper.tpl";
 
@@ -31,13 +33,13 @@ class TinyHelper extends \OxidEsales\Eshop\Application\Controller\Admin\AdminCon
 
     public function render()
     {
-        $oOutput = oxRegistry::get("oxOutput");
+        /** @var Output $oOutput */
+        $oOutput = oxNew(Output::class);
         $oOutput->setCharset($this->getCharSet());
-        $oOutput->setOutputFormat(oxOutput::OUTPUT_FORMAT_JSON);
+        $oOutput->setOutputFormat(Output::OUTPUT_FORMAT_JSON);
         $oOutput->sendHeaders();
         $oOutput->output('errors', $this->_errors);
         $oOutput->output('content', $this->_content);
         exit;
     }
-
 }

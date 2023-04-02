@@ -19,11 +19,13 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-namespace VanillaThunder\TinyMCE\Application\Core;
-use \OxidEsales\Eshop\Core\Registry;
+namespace O3\TinyMCE\Application\Core;
+
+use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\Eshop\Core\UtilsServer;
 
-/** funtion for adding quotes to config variables
+/**
+ * funtion for adding quotes to config variables
  * @param $string
  * @return string
  */
@@ -305,19 +307,15 @@ copyLongDesc = function(sIdent) {
 
     protected function _getTinyToolbarControls()
     {
-        $aControls = (method_exists(
-            get_parent_class(__CLASS__),
-            __FUNCTION__
-        )) ? parent::_getTinyToolbarControls() : array();
+        $aControls = [];
+
         return $aControls;
     }
 
     protected function _getTinyExtPlugins()
     {
         $aPlugins = Registry::getConfig()->getConfigParam("aTinyMCE_external_plugins");
-        if (method_exists(get_parent_class(__CLASS__), __FUNCTION__)) {
-            $aPlugins = array_merge(parent::_getTinyExtPlugins(), $aPlugins);
-        }
+
         return $aPlugins;
     }
 
@@ -327,9 +325,7 @@ copyLongDesc = function(sIdent) {
         //$oModCfg->get('setting-name', 'module-id');
 
         $aConfig = Registry::getConfig()->getConfigParam("aTinyMCE_config");
-        if (method_exists(get_parent_class(__CLASS__), __FUNCTION__)) {
-            $aConfig = array_merge(parent::_getTinyCustConfig(), $aConfig);
-        }
+
         return $aConfig;
     }
 }

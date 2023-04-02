@@ -19,11 +19,11 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-namespace VanillaThunder\TinyMCE\Application\Controller\Admin;
+namespace O3\TinyMCE\Application\Controller\Admin;
 
-use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\Eshop\Application\Controller\Admin\AdminController;
 
-class TinyFileManager extends \OxidEsales\Eshop\Application\Controller\Admin\AdminController
+class TinyFileManager extends AdminController
 {
     protected $_sThisTemplate = "tiny/filemanager.tpl";
 
