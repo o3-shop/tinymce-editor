@@ -30,13 +30,14 @@ use O3\TinyMCE\Application\Core\TinyMCE\Utils;
 
 class QuickbarsInsertToolbar extends AbstractOption
 {
-    public const KEY = 'quickbars_insert_toolbar';
+    protected string $key = 'quickbars_insert_toolbar';
 
     public function get(): string
     {
         return implode(
             ' | ',
             [
+                // 'quickimage', // disabled, as images are only inserted inline. This is too much for a typical database field length.
                 'quicktable',
                 'hr',
                 'pagebreak'

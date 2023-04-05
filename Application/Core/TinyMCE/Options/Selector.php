@@ -27,7 +27,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Loader;
 
 class Selector extends AbstractOption
 {
-    public const KEY = 'selector';
+    protected string $key = 'selector';
 
     public function get(): string
     {

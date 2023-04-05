@@ -38,14 +38,6 @@ class ViewConfig extends ViewConfig_parent
 
         $loader = oxNew(Loader::class, $config, $language);
 
-        return $loader->getEditorSwitch();
+        return $loader->getEditorCode();
     }
 }
-
-
-// ToDo:
-
-// https://www.tiny.cloud/docs/tinymce/6/toolbar-configuration-options/
-// flexible MinHeight je nach Logineinstellung
-// flexibles CSS basierend auf Wave
-// MediaSelect Bug

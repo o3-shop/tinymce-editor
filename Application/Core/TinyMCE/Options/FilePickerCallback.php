@@ -23,12 +23,21 @@ declare(strict_types=1);
 
 namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
-class ToolbarSticky extends AbstractOption
+use O3\TinyMCE\Application\Core\TinyMCE\Loader;
+
+class FilePickerCallback extends AbstractOption
 {
-    protected string $key = 'toolbar_sticky';
+    protected string $key = 'file_picker_callback';
+
+    protected Loader $loader;
 
     public function get(): string
     {
-        return 'true';
+        return 'RoxyFileBrowser';
+    }
+
+    public function requireRegistration(): bool
+    {
+        return (bool) $this->loader->getShopConfig()->getConfigParam("blTinyMCE_filemanager");
     }
 }

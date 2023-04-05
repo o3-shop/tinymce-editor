@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class Menubar extends AbstractOption
 {
-    public const KEY = 'menubar';
+    protected string $key = 'menubar';
 
     public function get(): string
     {

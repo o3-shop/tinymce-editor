@@ -30,7 +30,9 @@ use O3\TinyMCE\Application\Core\TinyMCE\ToolbarList;
 
 class Toolbar extends AbstractOption
 {
-    public const KEY = 'toolbar';
+    protected string $key = 'toolbar';
+
+    protected bool $forceSingleLineToolbar = true;
 
     public function __construct( Loader $loader )
     {
@@ -40,6 +42,56 @@ class Toolbar extends AbstractOption
     public function get(): string
     {
         $toolbarList = oxNew(ToolbarList::class);
+
+        return $this->forceSingleLineToolbar ?
+            $this->getSingleLineToolbar($toolbarList) :
+            $this->getMultiLineToolbar($toolbarList);
+    }
+
+    protected function getSingleLineToolbar($toolbarList)
+    {
+        $all = [];
+
+        foreach ($toolbarList->get() as $toolbar) {
+            $all = array_merge($all, $toolbar);
+        }
+
+        $toolbarElements = implode(
+            ' | ',
+            array_filter(
+                array_map(
+                    function ($toolbarElement) {
+                        return implode(
+                            ' ',
+                            $toolbarElement->getButtons()
+                        );
+                    },
+                    $all
+                )
+            )
+        );
+
+        $pluginList = oxNew(PluginList::class);
+        $pluginToolbarElements = implode(
+            ' | ',
+            array_filter(
+                array_map(
+                    function (PluginInterface $plugin) {
+                        return count($plugin->getToolbarElements()) ? implode(
+                            ' ',
+                            $plugin->getToolbarElements()
+                        ) : null;
+                    },
+                    $pluginList->get()
+                )
+            )
+        );
+
+        return $toolbarElements . ' | ' . $pluginToolbarElements;
+    }
+
+    protected function getMultiLineToolbar($toolbarList)
+    {
         $list = [];
 
         foreach ($toolbarList->get() as $toolbar) {
@@ -76,5 +128,10 @@ class Toolbar extends AbstractOption
         );
 
         return '["'.implode('", "', $list).'"]';
+    }
+
+    public function mustQuote(): bool
+    {
+        return true;
     }
 }

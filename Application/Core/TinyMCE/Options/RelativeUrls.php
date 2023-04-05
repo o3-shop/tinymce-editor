@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class RelativeUrls extends AbstractOption
 {
-    public const KEY = 'relative_urls';
+    protected string $key = 'relative_urls';
 
     public function get(): string
     {

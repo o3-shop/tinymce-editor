@@ -29,6 +29,8 @@ interface OptionInterface
 {
     public function __construct(Loader $loader);
 
+    public function getKey(): string;
+
     public function get(): string;
 
     public function mustQuote(): bool;

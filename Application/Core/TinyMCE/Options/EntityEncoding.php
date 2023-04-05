@@ -27,7 +27,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Loader;
 
 class EntityEncoding extends AbstractOption
 {
-    public const KEY = 'entity_encoding';
+    protected string $key = 'entity_encoding';
 
     protected Loader $loader;
 

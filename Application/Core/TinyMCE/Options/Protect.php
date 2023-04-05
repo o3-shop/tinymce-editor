@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class Protect extends AbstractOption
 {
-    public const KEY = 'protect';
+    protected string $key = 'protect';
 
     public function get(): string
     {

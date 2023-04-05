@@ -24,17 +24,17 @@ declare(strict_types=1);
 namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 use O3\TinyMCE\Application\Core\TinyMCE\Loader;
+use OxidEsales\Eshop\Core\Registry;
 
 class ContentCss extends AbstractOption
 {
-    public const KEY = 'content_css';
+    protected string $key = 'content_css';
 
     protected Loader $loader;
 
     public function get(): string
     {
-        // ToDo: use current theme
-        return '/out/wave/src/css/styles.min.css';
+        return '/out/'.strtolower(Registry::getConfig()->getConfigParam('sTheme')).'/src/css/styles.min.css';
     }
 
     public function mustQuote(): bool

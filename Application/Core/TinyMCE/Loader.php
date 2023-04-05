@@ -43,11 +43,11 @@ class Loader
     /**
      * @return string
      */
-    public function getEditorSwitch(): string
+    public function getEditorCode(): string
     {
         if (!$this->isEnabledForCurrentController()) return '';
 
-        if ($this->contentIsPlain()) return $this->language->translateString('BLA_TINYMCE_PLAINCMS');
+        if ($this->contentIsPlain()) return $this->language->translateString('TINYMCE_PLAINCMS');
 
         $configuration = oxNew(Configuration::class, $this);
         $configuration->build();

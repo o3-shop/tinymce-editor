@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class Language extends AbstractOption
 {
-    public const KEY = 'language';
+    protected string $key = 'language';
 
     /**
      * @return string

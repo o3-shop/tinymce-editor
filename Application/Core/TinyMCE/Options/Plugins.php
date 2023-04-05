@@ -28,7 +28,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Plugins\PluginInterface;
 
 class Plugins extends AbstractOption
 {
-    public const KEY = 'plugins';
+    protected string $key = 'plugins';
 
     public function get(): string
     {

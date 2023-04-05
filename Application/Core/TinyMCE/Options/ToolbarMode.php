@@ -23,12 +23,17 @@ declare(strict_types=1);
 
 namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
-class ToolbarSticky extends AbstractOption
+class ToolbarMode extends AbstractOption
 {
-    protected string $key = 'toolbar_sticky';
+    protected string $key = 'toolbar_mode';
 
     public function get(): string
     {
-        return 'true';
+        return 'sliding';
+    }
+
+    public function mustQuote(): bool
+    {
+        return true;
     }
 }

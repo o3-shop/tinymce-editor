@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class ImageAdvtab extends AbstractOption
 {
-    public const KEY = 'image_advtab';
+    protected string $key = 'image_advtab';
 
     public function get(): string
     {

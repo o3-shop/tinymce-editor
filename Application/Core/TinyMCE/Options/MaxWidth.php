@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class MaxWidth extends AbstractOption
 {
-    public const KEY = 'max_width';
+    protected string $key = 'max_width';
 
     public function get(): string
     {

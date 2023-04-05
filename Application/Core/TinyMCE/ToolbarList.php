@@ -58,39 +58,5 @@ class ToolbarList
                 'removeformat'  => oxNew(RemoveFormat::class),
             ]
         ];
-
-        $all = $this->getAll();
-
-        if ($count && isset($all[$count])) {
-            return $all[$count];
-        } elseif (!$count) {
-            $allList = [];
-            foreach ($all as $toolbars) {
-                $allList = array_merge($allList, $toolbars);
-            }
-            return $allList;
-        }
-    }
-
-    protected function getAll(): array
-    {
-        return [
-            1   => [
-                'formatselect'  => oxNew(Formatselect::class),
-                'font'          => oxNew(Font::class),
-                'color'         => oxNew(Color::class),
-                'align'         => oxNew(Align::class),
-                'subscript'     => oxNew(Subscript::class),
-                'superscript'   => oxNew(Superscript::class),
-            ],
-            2   => [
-                'undo'          => oxNew(Undo::class),
-                'copypaste'     => oxNew(CopyPaste::class),
-                'lists'         => oxNew(Lists::class),
-                'indent'        => oxNew(Indent::class),
-                'blockquote'    => oxNew(Blockquote::class),
-                'removeformat'  => oxNew(RemoveFormat::class),
-            ]
-        ];
     }
 }

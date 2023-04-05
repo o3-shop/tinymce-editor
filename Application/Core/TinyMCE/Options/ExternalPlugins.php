@@ -29,7 +29,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Utils;
 
 class ExternalPlugins extends AbstractOption
 {
-    public const KEY = 'external_plugins';
+    protected string $key = 'external_plugins';
 
     public function get(): string
     {

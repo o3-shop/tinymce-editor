@@ -27,7 +27,7 @@ use OxidEsales\Eshop\Core\Registry;
 
 class DocumentBaseUrl extends AbstractOption
 {
-    public const KEY = 'document_base_url';
+    protected string $key = 'document_base_url';
 
     public function get(): string
     {

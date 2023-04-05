@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class BaseUrl extends AbstractOption
 {
-    public const KEY = 'base_url';
+    protected string $key = 'base_url';
 
     /**
      * @return string

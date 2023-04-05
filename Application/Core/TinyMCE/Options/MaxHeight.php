@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class MaxHeight extends AbstractOption
 {
-    public const KEY = 'max_height';
+    protected string $key = 'max_height';
 
     public function get(): string
     {

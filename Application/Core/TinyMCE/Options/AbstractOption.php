@@ -27,11 +27,21 @@ use O3\TinyMCE\Application\Core\TinyMCE\Loader;
 
 abstract class AbstractOption implements OptionInterface
 {
+    protected string $key = 'undefinedKey';
+
     protected Loader $loader;
 
     public function __construct(Loader $loader)
     {
         $this->loader = $loader;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKey(): string
+    {
+        return $this->key;
     }
 
     abstract public function get(): string;

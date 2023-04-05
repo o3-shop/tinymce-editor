@@ -2,7 +2,7 @@
     <button style="border: 1px solid #0089EE; color: #0089EE;padding: 3px 10px; margin-top: -10px; background: white;"
             onclick="tinymce.each(tinymce.editors, function(editor) { if(editor.isHidden()) { editor.show(); } else { editor.hide(); } });">
         <span>
-            [{oxmultilang ident="BLA_TINYMCE_TOGGLE"}]
+            [{oxmultilang ident="TINYMCE_TOGGLE"}]
         </span>
     </button>
 </li>

@@ -23,12 +23,20 @@ declare(strict_types=1);
 
 namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
+use OxidEsales\Eshop\Core\Registry;
+
 class MinHeight extends AbstractOption
 {
-    public const KEY = 'min_height';
+    protected string $key = 'min_height';
 
     public function get(): string
     {
+        $profile = Registry::getSession()->getVariable('profile');
+
+        if (isset($profile) && $profile[1]) {
+            return (string) (max($profile[1] * 20, 350));
+        }
+
         return '350';
     }
 }

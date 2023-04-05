@@ -27,7 +27,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Loader;
 
 class CacheSuffix extends AbstractOption
 {
-    public const KEY = 'cache_suffix';
+    protected string $key = 'cache_suffix';
 
     protected Loader $loader;
 

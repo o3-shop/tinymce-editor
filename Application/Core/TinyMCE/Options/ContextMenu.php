@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 class ContextMenu extends AbstractOption
 {
-    public const KEY = 'contextmenu';
+    protected string $key = 'contextmenu';
 
     public function get(): string
     {
