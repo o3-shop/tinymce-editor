@@ -21,10 +21,17 @@
 
 declare(strict_types=1);
 
-function checkAccess($action)
+namespace O3\TinyMCE\Application\Core\TinyMCE\Plugins;
+
+interface PluginInterface
 {
-    //if(!session_id()) die("Access Denied!");
-    //if(!session_id()) session_start();
-    //if(isset($_GET['akey'])) $_SESSION['akey'] = strip_tags(preg_replace( "/[^a-zA-Z0-9\._-]/", '', $_GET['akey']));
-	if($_COOKIE['filemanagerkey'] !== md5($_SERVER['DOCUMENT_ROOT'].$_COOKIE['admin_sid'])) die('Access Denied!!');
+    public function getPluginName(): string;
+
+    public function getToolbarElements(): array;
+
+    public function getScriptPath(): ?string;
+
+    public function requireRegistration(): bool;
+
+    public function requireScript(): bool;
 }

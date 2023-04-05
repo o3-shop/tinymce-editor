@@ -38,7 +38,8 @@ $aModule = [
     ],
     'templates' => [
         'TinyFilemanager.tpl'   => 'o3-shop/tinymce-editor/Application/views/admin/filemanager.tpl',
-        'TinyHelper.tpl'        => 'o3-shop/tinymce-editor/Application/views/admin/helper.tpl'
+        'TinyHelper.tpl'        => 'o3-shop/tinymce-editor/Application/views/admin/helper.tpl',
+        'EditorSwitch.tpl'      => 'o3-shop/tinymce-editor/Application/views/admin/editorswitch.tpl'
     ],
     'blocks' => [
         [
@@ -64,29 +65,6 @@ $aModule = [
         ],
         [
             'group' => 'tinyMceMain',
-            'name' => 'aTinyMCE_plaincms',
-            'type' => 'arr',
-            'value' => [
-                "oxadminorderplainemail",
-                "oxadminordernpplainemail", // bestellbenachrichtigung admin + fremdländer
-                "oxuserorderplainemail",
-                "oxuserordernpplainemail",
-                "oxuserorderemailendplain", // bestellbenachrichtigung user + fremdländer + abschluss
-                "oxordersendplainemail", // versandbestätigung
-                "oxregisterplainemail",
-                "oxregisterplainaltemail", // registrierung
-                "oxupdatepassinfoplainemail", // passwort update
-                "oxnewsletterplainemail", // newsletter
-                "oxemailfooterplain", // email fußtext
-                "oxrighttocancellegend",
-                "oxrighttocancellegend2", // widerrufsrecht
-                "oxstartmetadescription",
-                "oxstartmetakeywords" // META Tags
-            ],
-            'position' => 1
-        ],
-        [
-            'group' => 'tinyMceMain',
             'name' => 'blTinyMCE_filemanager',
             'type' => 'bool',
             'value' => true,
@@ -95,38 +73,6 @@ $aModule = [
         [
             'group' => 'tinyMceMain',
             'name' => 'aTinyMCE_extjs',
-            'type' => 'arr',
-            'value' => [],
-            'position' => 3
-        ],
-
-
-        // ################################################################# tinymce settings
-
-        [
-            'group' => 'tinyMceSettings',
-            'name' => 'aTinyMCE_config',
-            'type' => 'aarr',
-            'value' => [],
-            'position' => 0
-        ],
-        [
-            'group' => 'tinyMceSettings',
-            'name' => 'aTinyMCE_plugins',
-            'type' => 'aarr',
-            'value' => [],
-            'position' => 1
-        ],
-        [
-            'group' => 'tinyMceSettings',
-            'name' => 'aTinyMCE_external_plugins',
-            'type' => 'aarr',
-            'value' => [],
-            'position' => 2
-        ],
-        [
-            'group' => 'tinyMceSettings',
-            'name' => 'aTinyMCE_buttons',
             'type' => 'arr',
             'value' => [],
             'position' => 3

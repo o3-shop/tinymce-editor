@@ -21,10 +21,26 @@
 
 declare(strict_types=1);
 
-function checkAccess($action)
+namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
+
+class BaseUrl extends AbstractOption
 {
-    //if(!session_id()) die("Access Denied!");
-    //if(!session_id()) session_start();
-    //if(isset($_GET['akey'])) $_SESSION['akey'] = strip_tags(preg_replace( "/[^a-zA-Z0-9\._-]/", '', $_GET['akey']));
-	if($_COOKIE['filemanagerkey'] !== md5($_SERVER['DOCUMENT_ROOT'].$_COOKIE['admin_sid'])) die('Access Denied!!');
+    public const KEY = 'base_url';
+
+    /**
+     * @return string
+     */
+    public function get(): string
+    {
+        return $this->loader->getShopConfig()->getActiveView()->getViewConfig()->getBaseDir() .
+               'modules/o3-shop/tinymce-editor/out/tinymce/';
+    }
+
+    /**
+     * @return bool
+     */
+    public function mustQuote(): bool
+    {
+        return true;
+    }
 }

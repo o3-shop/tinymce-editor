@@ -21,31 +21,40 @@
 
 declare(strict_types=1);
 
-namespace O3\TinyMCE\Application\Core;
+namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 use O3\TinyMCE\Application\Core\TinyMCE\Loader;
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\Eshop\Core\UtilsServer;
 
-class ViewConfig extends ViewConfig_parent
+class FilemanagerUrl extends AbstractOption
 {
-    /**
-     * @return string
-     */
-    public function loadTinyMce(): string
+    public const KEY = 'filemanager_url';
+
+    protected Loader $loader;
+
+    public function get(): string
     {
-        $config = Registry::getConfig();
-        $language = Registry::getLang();
+        $sFilemanagerKey = md5_file(Registry::getConfig()->getConfigParam("sShopDir")."/config.inc.php");
+        Registry::get(UtilsServer::class)->setOxCookie("filemanagerkey", $sFilemanagerKey);
 
-        $loader = oxNew(Loader::class, $config, $language);
+        return str_replace(
+            '&amp;',
+            '&',
+            Registry::getConfig()->getActiveView()->getViewConfig()->getSslSelfLink()."cl=tinyfilemanager"
+        );
+    }
 
-        return $loader->getEditorSwitch();
+    public function mustQuote(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function requireRegistration(): bool
+    {
+        return (bool) $this->loader->getShopConfig()->getConfigParam("blTinyMCE_filemanager");
     }
 }
-
-
-// ToDo:
-
-// https://www.tiny.cloud/docs/tinymce/6/toolbar-configuration-options/
-// flexible MinHeight je nach Logineinstellung
-// flexibles CSS basierend auf Wave
-// MediaSelect Bug

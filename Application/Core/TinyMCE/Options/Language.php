@@ -21,10 +21,38 @@
 
 declare(strict_types=1);
 
-function checkAccess($action)
+namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
+
+class Language extends AbstractOption
 {
-    //if(!session_id()) die("Access Denied!");
-    //if(!session_id()) session_start();
-    //if(isset($_GET['akey'])) $_SESSION['akey'] = strip_tags(preg_replace( "/[^a-zA-Z0-9\._-]/", '', $_GET['akey']));
-	if($_COOKIE['filemanagerkey'] !== md5($_SERVER['DOCUMENT_ROOT'].$_COOKIE['admin_sid'])) die('Access Denied!!');
+    public const KEY = 'language';
+
+    /**
+     * @return string
+     */
+    public function get(): string
+    {
+        // https://www.tiny.cloud/docs/configure/localization/#language
+
+        $oLang = $this->loader->getLanguage();
+
+        $aLang = array(
+            "cs" => "cs",
+            "da" => "da",
+            "de" => "de",
+            "es" => "es_419",
+            "fr" => "fr_FR",
+            "it" => "it_IT",
+            "nl" => "nl",
+            "ru" => "ru"
+        );
+        $sLang = $aLang[ $oLang->getLanguageAbbr( $oLang->getTplLanguage() ) ] ?? "en";
+
+        return $sLang;
+    }
+
+    public function mustQuote(): bool
+    {
+        return true;
+    }
 }

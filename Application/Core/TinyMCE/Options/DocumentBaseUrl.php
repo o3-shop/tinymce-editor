@@ -21,10 +21,21 @@
 
 declare(strict_types=1);
 
-function checkAccess($action)
+namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
+
+use OxidEsales\Eshop\Core\Registry;
+
+class DocumentBaseUrl extends AbstractOption
 {
-    //if(!session_id()) die("Access Denied!");
-    //if(!session_id()) session_start();
-    //if(isset($_GET['akey'])) $_SESSION['akey'] = strip_tags(preg_replace( "/[^a-zA-Z0-9\._-]/", '', $_GET['akey']));
-	if($_COOKIE['filemanagerkey'] !== md5($_SERVER['DOCUMENT_ROOT'].$_COOKIE['admin_sid'])) die('Access Denied!!');
+    public const KEY = 'document_base_url';
+
+    public function get(): string
+    {
+        return Registry::getConfig()->getActiveView()->getViewConfig()->getBaseDir();
+    }
+
+    public function mustQuote(): bool
+    {
+        return true;
+    }
 }
