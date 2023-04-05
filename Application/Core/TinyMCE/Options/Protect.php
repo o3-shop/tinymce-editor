@@ -29,8 +29,13 @@ class Protect extends AbstractOption
 
     public function get(): string
     {
-        // ToDo: check this regexp
+        $protect = [
+            '/\[\{((?!\}\]).)+\}\]/gm', // Allow Smarty codes [{foobar}]
+            '/\{\{(.*)\}\}/gm', // Allow Twig output codes  {{foobar}}
+            '/\{\%(.*)\%\}/gm', // Allow TWIG control codes  {%foobar%}
+            '/\{\#(.*)\#\}/gm', // Allow TWIG comment codes  {#foobar#}
+        ];
 
-        return '[ /\[\{((?!\}\]).)+\}\]/gm ]';
+        return '[ '.implode(', ', $protect).' ]';
     }
 }

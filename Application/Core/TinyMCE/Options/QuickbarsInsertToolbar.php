@@ -34,6 +34,8 @@ class QuickbarsInsertToolbar extends AbstractOption
 
     public function get(): string
     {
+        return 'false';
+/*
         return implode(
             ' | ',
             [
@@ -43,11 +45,12 @@ class QuickbarsInsertToolbar extends AbstractOption
                 'pagebreak'
             ]
         );
+*/
     }
 
     public function mustQuote(): bool
     {
-        return true;
+        return $this->get() !== 'false';
     }
 
     public function requireRegistration(): bool
