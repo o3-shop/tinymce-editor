@@ -19,26 +19,23 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
-
 $sMetadataVersion = '2.1';
 $aModule = [
     'id' => 'tinymce-editor',
     'title' => 'TinyMCE Editor',
     'description' => 'TinyMCE 5 Integration for O3-Shop',
     'thumbnail' => 'tinymce.png',
-    'version' => '3.1.0 ( 2021-10-20 )',
+    'version' => '1.0.0 ( 2023-04-06 )',
     'author' => 'Marat Bedoev, O3-Shop',
     'url' => 'https://www.o3-shop.com/',
     'extend' => [
         OxidEsales\Eshop\Core\ViewConfig::class => O3\TinyMCE\Application\Core\ViewConfig::class
     ],
     'controllers' => [
-        'tinyfilemanager' => O3\TinyMCE\Application\Controller\Admin\TinyFileManager::class,
-        'tinyhelper' => O3\TinyMCE\Application\Controller\Admin\TinyHelper::class
+        'tinyfilemanager'   => O3\TinyMCE\Application\Controller\Admin\TinyFileManager::class
     ],
     'templates' => [
         'TinyFilemanager.tpl'   => 'o3-shop/tinymce-editor/Application/views/admin/filemanager.tpl',
-        'TinyHelper.tpl'        => 'o3-shop/tinymce-editor/Application/views/admin/helper.tpl',
         'EditorSwitch.tpl'      => 'o3-shop/tinymce-editor/Application/views/admin/editorswitch.tpl'
     ],
     'blocks' => [

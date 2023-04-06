@@ -45,41 +45,6 @@ class Plugins extends AbstractOption
                 $pluginList->get()
             )
         ));
-
-        $aPlugins = array(
-            //'advlist' => '', // '' = plugin has no buttons
-            'anchor'        => 'anchor',
-            'autolink'      => '',
-            'autoresize'    => '',
-            'charmap'       => 'charmap',
-            'code'          => 'code',
-            'hr'            => 'hr',
-            'image'         => 'image',
-            // 'imagetools' => '', // das hier klingt sehr kompliziert
-            'link'          => 'link unlink',
-            'lists'         => '',
-            'media'         => 'media',
-            'nonbreaking'   => 'nonbreaking',
-            'pagebreak'     => 'pagebreak',
-            'paste'         => 'pastetext',
-            'preview'       => 'preview',
-            'quickbars'     => '',//'quicklink quickimage quicktable',
-            'searchreplace' => 'searchreplace',
-            'table'         => 'table',
-            'visualblocks'  => 'visualblocks',
-            'wordcount'     => '',
-            'oxfullscreen'  => 'fullscreen', //custom fullscreen plugin
-            //'oxwidget'       => 'widget'
-            //'oxgetseourl'    => 'yolo' //custom seo url plugin // wip
-        );
-
-        // plugins for newsletter emails
-        if ( $this->getActiveClassName() === "newsletter_main" ) {
-            $aPlugins["legacyoutput"] = "";
-            $aPlugins["fullpage"]     = "fullpage";
-        }
-
-        return 350;
     }
 
     public function mustQuote(): bool

@@ -1,162 +1,45 @@
 /**
- * ___MODULE___
- * info:  ___EMAIL___ *
- * fullscreen plugin adapted for oxids f*cking framesets
+ * vanilla-thunder/oxid-module-tinymce
+ * TinyMCE 5 Integration for OXID eShop V6.2
  *
- * Released under LGPL License.
- * Copyright (c) 2016 Ephox Corp. All rights reserved
+ * This program is free software;
+ * you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation;
+ * either version 3 of the License, or (at your option) any later version.
  *
- * inspired by fullscreen plugin by Ephox Corp:
- * https://github.com/tinymce/tinymce/blob/master/js/tinymce/plugins/fullscreen/plugin.js
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ *  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>
  */
 
 /*global tinymce:true */
 
-tinymce.PluginManager.add('oxfullscreen', function(editor) {
-	var fullscreenState = false, DOM = tinymce.DOM, iframeWidth, iframeHeight, resizeHandler;
-	var containerWidth, containerHeight, scrollPos;
+(function () {
+	'use strict';
+	var PM = tinymce.util.Tools.resolve('tinymce.PluginManager');
 
-	if (editor.settings.inline) {
-		return;
-	}
-
-	function getWindowSize() {
-		var w, h, win = window, doc = document;
-		var body = doc.body;
-
-		// Old IE
-		if (body.offsetWidth) {
-			w = body.offsetWidth;
-			h = body.offsetHeight;
-		}
-
-		// Modern browsers
-		if (win.innerWidth && win.innerHeight) {
-			w = win.innerWidth;
-			h = win.innerHeight;
-		}
-
-		return {w: w, h: h};
-	}
-
-	function getScrollPos() {
-		var vp = tinymce.DOM.getViewPort();
+	PM.add('oxfullscreen', function (editor) {
+		editor.ui.registry.addToggleButton('fullscreen', {
+			tooltip: 'Fullscreen',
+			icon: 'fullscreen',
+			shortcut: 'Meta+Alt+F',
+			active: false,
+			onAction: (api) => {
+				const topframeset = top.document.getElementsByTagName("frameset");
+				topframeset[0].setAttribute("cols", (topframeset[0].getAttribute("cols") === "200,*" ? "1px,*" : "200,*"));
+				topframeset[1].setAttribute("rows", (topframeset[1].getAttribute("rows") === "54,*" ? "1px,*" : "54,*"));
+				const parentframeset = parent.document.getElementsByTagName("frameset");
+				parentframeset[0].setAttribute("rows", (parentframeset[0].getAttribute("rows") === "40%,*" ? "1px,*" : "40%,*"));
+				api.setActive(!api.isActive());
+			}
+		});
 
 		return {
-			x: vp.x,
-			y: vp.y
+			getMetadata: () => {
+				return {
+					name: "TinyMCE Fullscreen Editing Plugin for OXID eShop",
+					url: "https://github.com/vanilla-thunder/oxid-module-tinymce"
+				};
+			}
 		};
-	}
-
-	function setScrollPos(pos) {
-		scrollTo(pos.x, pos.y);
-	}
-
-	function toggleFullscreen() {
-		var body = document.body, documentElement = document.documentElement, editorContainerStyle;
-		var editorContainer, iframe, iframeStyle;
-
-		function resize() {
-			DOM.setStyle(iframe, 'height', getWindowSize().h - (editorContainer.clientHeight - iframe.clientHeight));
-		}
-
-		fullscreenState = !fullscreenState;
-
-		editorContainer = editor.getContainer();
-		editorContainerStyle = editorContainer.style;
-		iframe = editor.getContentAreaContainer().firstChild;
-		iframeStyle = iframe.style;
-
-		if (fullscreenState) {
-		    // changeing frameset size to 5%, *
-		    parent.document.getElementsByTagName("frameset")[0].setAttribute("rows","1px,*");
-		    
-			scrollPos = getScrollPos();
-			iframeWidth = iframeStyle.width;
-			iframeHeight = iframeStyle.height;
-			iframeStyle.width = iframeStyle.height = '100%';
-			containerWidth = editorContainerStyle.width;
-			containerHeight = editorContainerStyle.height;
-			editorContainerStyle.width = editorContainerStyle.height = '';
-
-			DOM.addClass(body, 'mce-fullscreen');
-			DOM.addClass(documentElement, 'mce-fullscreen');
-			DOM.addClass(editorContainer, 'mce-fullscreen');
-
-			DOM.bind(window, 'resize', resize);
-			resize();
-			resizeHandler = resize;
-		} else {
-		    // changing frameset size back to 40% , *
-		    parent.document.getElementsByTagName("frameset")[0].setAttribute("rows","40%,*");
-		    
-			iframeStyle.width = iframeWidth;
-			iframeStyle.height = iframeHeight;
-
-			if (containerWidth) {
-				editorContainerStyle.width = containerWidth;
-			}
-
-			if (containerHeight) {
-				editorContainerStyle.height = containerHeight;
-			}
-
-			DOM.removeClass(body, 'mce-fullscreen');
-			DOM.removeClass(documentElement, 'mce-fullscreen');
-			DOM.removeClass(editorContainer, 'mce-fullscreen');
-			DOM.unbind(window, 'resize', resizeHandler);
-			setScrollPos(scrollPos);
-		}
-
-		editor.fire('FullscreenStateChanged', {state: fullscreenState});
-	}
-
-	editor.on('init', function() {
-		editor.addShortcut('Ctrl+Shift+F', '', toggleFullscreen);
 	});
-
-	editor.on('remove', function() {
-		if (resizeHandler) {
-			DOM.unbind(window, 'resize', resizeHandler);
-		}
-	});
-
-	editor.addCommand('mceFullScreen', toggleFullscreen);
-
-	editor.addMenuItem('fullscreen', {
-		text: 'Fullscreen',
-		shortcut: 'Meta+Alt+F',
-		selectable: true,
-		onClick: function() {
-			toggleFullscreen();
-			editor.focus();
-		},
-		onPostRender: function() {
-			var self = this;
-
-			editor.on('FullscreenStateChanged', function(e) {
-				self.active(e.state);
-			});
-		},
-		context: 'view'
-	});
-
-	editor.addButton('fullscreen', {
-		tooltip: 'Fullscreen',
-		shortcut: 'Meta+Alt+F',
-		onClick: toggleFullscreen,
-		onPostRender: function() {
-			var self = this;
-
-			editor.on('FullscreenStateChanged', function(e) {
-				self.active(e.state);
-			});
-		}
-	});
-
-	return {
-		isFullscreen: function() {
-			return fullscreenState;
-		}
-	};
-});
+}());
