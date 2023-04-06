@@ -30,7 +30,6 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\ContextMenu;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\DocumentBaseUrl;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\EntityEncoding;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ExternalPlugins;
-use O3\TinyMCE\Application\Core\TinyMCE\Options\FilePickerCallback;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\FilemanagerUrl;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ImageAdvtab;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Language;
@@ -159,7 +158,6 @@ class Configuration
         $this->addOption(oxNew( Plugins::class, $this->loader));
         $this->addOption(oxNew( ExternalPlugins::class, $this->loader));
         $this->addOption(oxNew( FilemanagerUrl::class, $this->loader));
-        $this->addOption(oxNew( FilePickerCallback::class, $this->loader));
         $this->addOption(oxNew(QuickbarsInsertToolbar::class, $this->loader));
     }
 

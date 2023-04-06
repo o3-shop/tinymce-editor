@@ -41,7 +41,7 @@ class FilemanagerUrl extends AbstractOption
         return str_replace(
             '&amp;',
             '&',
-            Registry::getConfig()->getActiveView()->getViewConfig()->getSslSelfLink()."cl=tinyfilemanager&input=form-field_3980235013121680647721848"
+            Registry::getConfig()->getActiveView()->getViewConfig()->getSslSelfLink()."cl=tinyfilemanager"
         );
     }
 
