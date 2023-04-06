@@ -21,14 +21,27 @@
 
 declare(strict_types=1);
 
-namespace O3\TinyMCE\Application\Core\TinyMCE\Toolbar;
+namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
-class Formatselect extends AbstractToolbar
+class Setup extends AbstractOption
 {
-    public function getButtons(): array
+    protected string $key = 'setup';
+
+    public function get(): string
     {
-        return [
-            'formatselect',
-        ];
+        $js = <<<JS
+            (editor) => {
+                editor.options.register("filemanager_url", { processor: "string" });
+            }
+JS;
+        return trim(preg_replace('!\s+!', ' ', $js));
+    }
+
+    /**
+     * @return bool
+     */
+    public function requireRegistration(): bool
+    {
+        return (bool) $this->loader->getShopConfig()->getConfigParam("blTinyMCE_filemanager");
     }
 }

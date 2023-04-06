@@ -21,19 +21,14 @@
 
 declare(strict_types=1);
 
-namespace O3\TinyMCE\Application\Core\TinyMCE\Plugins;
+namespace O3\TinyMCE\Application\Core\TinyMCE\Toolbar;
 
-class Paste extends AbstractPlugin
+class Blocks extends AbstractToolbar
 {
-    public function getPluginName(): string
-    {
-        return 'paste';
-    }
-
-    public function getToolbarElements(): array
+    public function getButtons(): array
     {
         return [
-            'pastetext'
+            'blocks',
         ];
     }
 }

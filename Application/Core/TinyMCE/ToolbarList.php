@@ -28,7 +28,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Blockquote;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Color;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\CopyPaste;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Font;
-use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Formatselect;
+use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Blocks;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Indent;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Lists;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\RemoveFormat;
@@ -42,7 +42,7 @@ class ToolbarList
     {
         return [
             [
-                'formatselect'  => oxNew(Formatselect::class),
+                'blocks'        => oxNew(Blocks::class),
                 'font'          => oxNew(Font::class),
                 'color'         => oxNew(Color::class),
                 'align'         => oxNew(Align::class),

@@ -21,19 +21,16 @@
 
 declare(strict_types=1);
 
-namespace O3\TinyMCE\Application\Core\TinyMCE\Plugins;
+namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
-class Hr extends AbstractPlugin
+use OxidEsales\Eshop\Core\Registry;
+
+class Promotion extends AbstractOption
 {
-    public function getPluginName(): string
-    {
-        return 'hr';
-    }
+    protected string $key = 'promotion';
 
-    public function getToolbarElements(): array
+    public function get(): string
     {
-        return [
-            'hr'
-        ];
+        return 'false';
     }
 }

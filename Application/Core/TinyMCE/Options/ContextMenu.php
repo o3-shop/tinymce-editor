@@ -29,7 +29,7 @@ class ContextMenu extends AbstractOption
 
     public function get(): string
     {
-        return 'link linkchecker image imagetools table';
+        return 'link linkchecker image table';
     }
 
     public function mustQuote(): bool

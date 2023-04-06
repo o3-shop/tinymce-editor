@@ -28,8 +28,8 @@ class Font extends AbstractToolbar
     public function getButtons(): array
     {
         return [
-            // 'fontselect',
-            //'fontsizeselect',
+            // 'fontfamily',
+            //'fontsize',
             // '|',
             'bold',
             'italic',

@@ -39,10 +39,12 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\Menubar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\MinHeight;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\OptionInterface;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Plugins;
+use O3\TinyMCE\Application\Core\TinyMCE\Options\Promotion;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Protect;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\QuickbarsInsertToolbar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\RelativeUrls;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Selector;
+use O3\TinyMCE\Application\Core\TinyMCE\Options\Setup;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Toolbar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ToolbarMode;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ToolbarSticky;
@@ -84,24 +86,6 @@ class Configuration
 
     public function getConfig()
     {
-/*
-        return implode(', ', array_map(
-            function ($v, $k) {
-                if (is_array($v)) {
-                    return $k.'[]='.implode('&'.$k.'[]=', $v);
-                } else {
-                    return $k.': '.$v;
-                }
-            },
-            $this->options,
-            array_keys($this->options)
-        ));
-
-
-        http_build_query($this->options,'',', ')
-*/
-//        $config = json_encode($this->options);
-
         foreach ($this->options as $param => $value) {
             $sConfig .= "$param: $value, ";
         }
@@ -114,6 +98,7 @@ class Configuration
      */
     protected function addIntegrateOptions(): void
     {
+        $this->addOption(oxNew( Setup::class, $this->loader));
         $this->addOption(oxNew( BaseUrl::class, $this->loader));
         $this->addOption(oxNew( CacheSuffix::class, $this->loader));
         $this->addOption(oxNew( Selector::class, $this->loader));
@@ -121,6 +106,7 @@ class Configuration
 
     protected function addGuiOptions(): void
     {
+        $this->addOption(oxNew(Promotion::class, $this->loader));
         $this->addOption(oxNew(ContextMenu::class, $this->loader));
         $this->addOption(oxNew(MinHeight::class, $this->loader));
         $this->addOption(oxNew(MaxHeight::class, $this->loader));

@@ -20,18 +20,19 @@
 (function () {
     'use strict';
     const PluginManager = tinymce.util.Tools.resolve('tinymce.PluginManager');
+
     PluginManager.add('roxy', function (editor) {
-        editor.settings.file_picker_callback = function ($callback, $value, $meta) {
-            var url = editor.settings.filemanager_url
+        editor.options.set('file_picker_callback', function ($callback, $value, $meta) {
+            var url = editor.options.get('filemanager_url')
                 + "&type=" + $meta.filetype
                 + '&value=' + $value
                 + '&selected=' + $value;
 
-            if (editor.settings.language) {
-                url += '&langCode=' + editor.settings.language;
+            if (editor.options.isSet('language')) {
+                url += '&langCode=' + editor.options.get('language');
             }
-            if (editor.settings.filemanager_access_key) {
-                url += '&akey=' + editor.settings.filemanager_access_key;
+            if (editor.options.isSet('filemanager_access_key')) {
+                url += '&akey=' + editor.options.get('filemanager_access_key');
             }
 
             const instanceApi = editor.windowManager.openUrl({
@@ -44,6 +45,6 @@
                     instanceApi.close();
                 }
             });
-        };
+        });
     });
 }());
