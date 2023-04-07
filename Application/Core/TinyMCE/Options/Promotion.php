@@ -23,8 +23,6 @@ declare(strict_types=1);
 
 namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
-use OxidEsales\Eshop\Core\Registry;
-
 class Promotion extends AbstractOption
 {
     protected string $key = 'promotion';

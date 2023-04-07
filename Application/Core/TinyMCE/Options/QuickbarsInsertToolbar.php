@@ -26,7 +26,6 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 use O3\TinyMCE\Application\Core\TinyMCE\PluginList;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\PluginInterface;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Quickbars;
-use O3\TinyMCE\Application\Core\TinyMCE\Utils;
 
 class QuickbarsInsertToolbar extends AbstractOption
 {

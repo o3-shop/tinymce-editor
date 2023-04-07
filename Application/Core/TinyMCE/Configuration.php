@@ -85,8 +85,10 @@ class Configuration
         $this->options[$optionInstance->getKey()] = $option;
     }
 
-    public function getConfig()
+    public function getConfig(): string
     {
+        $sConfig = '';
+
         foreach ($this->options as $param => $value) {
             $sConfig .= "$param: $value, ";
         }

@@ -31,6 +31,6 @@ $aLang = array(
    'HELP_SHOP_MODULE_aTinyMCE_classes'      => 'if you want to use TinyMCE for your custom controllers, you need to enter their class names here.',
    'SHOP_MODULE_sTinyMCE_apikey'            => 'optional API key from your TinyMCE registration',
    'SHOP_MODULE_aTinyMCE_extjs'             => '<h3>external JS dependencies</h3> (e.g. for plugins)',
-   'HELP_SHOP_MODULE_aTinyMCE_extjs'        => 'full URL with http:// or https:// if your shop runs with HTTPS.',
+   'HELP_SHOP_MODULE_aTinyMCE_extjs'        => 'Full URL with https://.',
    'SHOP_MODULE_GROUP_tinyMceSettings'      => 'TinyMCE Settings &amp; Plugins',
 );

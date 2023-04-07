@@ -46,9 +46,7 @@ class Language extends AbstractOption
             "nl" => "nl",
             "ru" => "ru"
         );
-        $sLang = $aLang[ $oLang->getLanguageAbbr( $oLang->getTplLanguage() ) ] ?? "en";
-
-        return $sLang;
+        return $aLang[ $oLang->getLanguageAbbr( $oLang->getTplLanguage() ) ] ?? "en";
     }
 
     public function mustQuote(): bool

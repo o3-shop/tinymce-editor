@@ -25,6 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE;
 
 use OxidEsales\Eshop\Application\Model\Content;
 use OxidEsales\Eshop\Core\Config;
+use OxidEsales\Eshop\Core\Exception\FileException;
 use OxidEsales\Eshop\Core\Language;
 use OxidEsales\Eshop\Core\Model\BaseModel;
 use OxidEsales\Eshop\Core\Registry;
@@ -42,6 +43,7 @@ class Loader
 
     /**
      * @return string
+     * @throws FileException
      */
     public function getEditorCode(): string
     {
@@ -74,7 +76,7 @@ class Loader
      */
     protected function contentIsPlain(): bool
     {
-        /** @var BaseModel $oEditObject */
+        /** @var BaseModel|Content $oEditObject */
         $oEditObject = $this->getShopConfig()->getActiveView()->getViewDataElement( "edit" );
         return $oEditObject instanceof Content && $oEditObject->isPlain();
     }
@@ -109,7 +111,6 @@ class Loader
             $configuration->getConfig(),
             file_get_contents(__DIR__.'/../../../out/scripts/init.js')
         );
-dumpvar($sInit.PHP_EOL, 1);
         $smarty = Registry::getUtilsView()->getSmarty();
         $sSufix = ($smarty->_tpl_vars["__oxid_include_dynamic"]) ? '_dynamic' : '';
 
@@ -123,7 +124,7 @@ dumpvar($sInit.PHP_EOL, 1);
 
     /**
      * @return void
-     * @throws \oxFileException
+     * @throws FileException
      */
     protected function registerIncludes(): void
     {

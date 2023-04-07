@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace O3\TinyMCE\Application\Core\TinyMCE\Plugins;
 
+use OxidEsales\Eshop\Core\Exception\FileException;
 use OxidEsales\Eshop\Core\Registry;
 
 class FullScreen extends AbstractPlugin
@@ -39,6 +40,10 @@ class FullScreen extends AbstractPlugin
         ];
     }
 
+    /**
+     * @return string|null
+     * @throws FileException
+     */
     public function getScriptPath(): ?string
     {
         return Registry::getConfig()->getActiveView()->getViewConfig()->getModuleUrl(

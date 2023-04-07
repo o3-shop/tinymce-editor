@@ -26,15 +26,11 @@ namespace O3\TinyMCE\Application\Core\TinyMCE;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Align;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Blockquote;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Color;
-use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\CopyPaste;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Font;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Blocks;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Indent;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Lists;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\RemoveFormat;
-use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Subscript;
-use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Superscript;
-use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Undo;
 
 class ToolbarList
 {

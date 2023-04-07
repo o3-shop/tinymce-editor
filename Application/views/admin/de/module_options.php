@@ -31,6 +31,6 @@ $aLang = array(
    'HELP_SHOP_MODULE_aTinyMCE_classes'      => 'für die Benutzung von TinyMCE in eigenen Admin Views muss hier die entsprechende Controllerklasse eingetragen werden, dann wird für jedes Textarea je ein Editor erzeugt',
    'SHOP_MODULE_sTinyMCE_apikey'            => 'optionaler API-Key aus Ihrer TinyMCE Registrierung',
    'SHOP_MODULE_aTinyMCE_extjs'             => '<h3>Externe JS Abhängigkeiten</h3>',
-   'HELP_SHOP_MODULE_aTinyMCE_extjs'        => 'Komplette URL mit http:// bzw https:// falls der Shop über HTTPS läuft.',
+   'HELP_SHOP_MODULE_aTinyMCE_extjs'        => 'Komplette URL mit https://.',
    'SHOP_MODULE_GROUP_tinyMceSettings'      => 'TinyMCE Einstellungen &amp; Plugins',
 );

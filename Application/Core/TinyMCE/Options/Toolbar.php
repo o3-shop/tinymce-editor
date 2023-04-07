@@ -48,7 +48,7 @@ class Toolbar extends AbstractOption
             $this->getMultiLineToolbar($toolbarList);
     }
 
-    protected function getSingleLineToolbar($toolbarList)
+    protected function getSingleLineToolbar($toolbarList): string
     {
         $all = [];
 
@@ -90,7 +90,7 @@ class Toolbar extends AbstractOption
         return $toolbarElements . ' | ' . $pluginToolbarElements;
     }
 
-    protected function getMultiLineToolbar($toolbarList)
+    protected function getMultiLineToolbar($toolbarList): string
     {
         $list = [];
 
@@ -112,7 +112,7 @@ class Toolbar extends AbstractOption
         }
 
         $pluginList = oxNew(PluginList::class);
-        $list[] = $pluginToolbarElements = implode(
+        $list[] = implode(
             ' | ',
             array_filter(
                 array_map(

@@ -51,13 +51,5 @@ class ExternalPlugins extends AbstractOption
         );
 
         return '{ '.$list.' }';
-
-        // plugins for newsletter emails
-        if ( $this->getActiveClassName() === "newsletter_main" ) {
-            $aPlugins["legacyoutput"] = "";
-            $aPlugins["fullpage"]     = "fullpage";
-        }
-
-        return 350;
     }
 }
