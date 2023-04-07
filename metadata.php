@@ -69,10 +69,17 @@ $aModule = [
         ],
         [
             'group' => 'tinyMceMain',
+            'name' => 'sTinyMCE_apikey',
+            'type' => 'str',
+            'value' => '',
+            'position' => 3
+        ],
+        [
+            'group' => 'tinyMceMain',
             'name' => 'aTinyMCE_extjs',
             'type' => 'arr',
             'value' => [],
-            'position' => 3
+            'position' => 4
         ]
     ]
 ];

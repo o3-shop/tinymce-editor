@@ -132,15 +132,21 @@ dumpvar($sInit.PHP_EOL, 1);
 
         $aInclude = (array) Registry::getConfig()->getGlobalParameter('includes' . $sSuffix);
 
+        $aInclude[3][] = Registry::getConfig()->getActiveView()->getViewConfig()->getModuleUrl(
+            'tinymce-editor',
+            'out/tinymce/tinymce.min.js'
+        );
+
         $aExtjs = Registry::getConfig()->getConfigParam('aTinyMCE_extjs', []);
         foreach ($aExtjs as $js) {
             $aInclude[3][] = $js;
         }
 
-        $aInclude[3][] = Registry::getConfig()->getActiveView()->getViewConfig()->getModuleUrl(
-            'tinymce-editor',
-            'out/tinymce/tinymce.min.js'
-        );
+        if (strlen(trim(Registry::getConfig()->getConfigParam('sTinyMCE_apikey', '')))) {
+            $aInclude[3][] = "https://cdn.tiny.cloud/1/".
+                trim(Registry::getConfig()->getConfigParam('sTinyMCE_apikey', '')).
+                "/tinymce/6/plugins.min.js";
+        }
 
         Registry::getConfig()->setGlobalParameter('includes' . $sSuffix, $aInclude);
     }
