@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with O3-Shop.  If not, see <http://www.gnu.org/licenses/>
  *
- * @copyright  Copyright (c) 2022 OXID Marat Bedoev, bestlife AG
+ * @copyright  Copyright (c) 2022 Marat Bedoev, bestlife AG
  * @copyright  Copyright (c) 2023 O3-Shop (https://www.o3-shop.com)
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
