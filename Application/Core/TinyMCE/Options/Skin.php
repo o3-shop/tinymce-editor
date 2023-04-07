@@ -25,10 +25,11 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 use O3\TinyMCE\Application\Core\TinyMCE\Loader;
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\Eshop\Core\UtilsServer;
 
-class ContentCss extends AbstractOption
+class Skin extends AbstractOption
 {
-    protected string $key = 'content_css';
+    protected string $key = 'skin';
 
     protected Loader $loader;
 
@@ -36,14 +37,7 @@ class ContentCss extends AbstractOption
 
     public function get(): string
     {
-        return implode(
-            ',',
-            [
-                $this->darkMode ?
-                    'dark' :
-                    '/out/'.strtolower(Registry::getConfig()->getConfigParam('sTheme')).'/src/css/styles.min.css'
-            ]
-        );
+        return $this->darkMode ? 'oxide-dark' : 'oxide';
     }
 
     public function mustQuote(): bool

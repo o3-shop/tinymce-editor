@@ -45,6 +45,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\QuickbarsInsertToolbar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\RelativeUrls;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Selector;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Setup;
+use O3\TinyMCE\Application\Core\TinyMCE\Options\Skin;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Toolbar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ToolbarMode;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ToolbarSticky;
@@ -106,6 +107,7 @@ class Configuration
 
     protected function addGuiOptions(): void
     {
+        $this->addOption(oxNew(Skin::class, $this->loader));
         $this->addOption(oxNew(Promotion::class, $this->loader));
         $this->addOption(oxNew(ContextMenu::class, $this->loader));
         $this->addOption(oxNew(MinHeight::class, $this->loader));
