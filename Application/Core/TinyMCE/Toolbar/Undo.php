@@ -25,6 +25,9 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Toolbar;
 
 class Undo extends AbstractToolbar
 {
+    /**
+     * @return string[]
+     */
     public function getButtons(): array
     {
         return [

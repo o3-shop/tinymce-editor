@@ -49,7 +49,11 @@ class Loader
     {
         if (!$this->isEnabledForCurrentController()) return '';
 
-        if ($this->contentIsPlain()) return $this->language->translateString('TINYMCE_PLAINCMS');
+        if ($this->contentIsPlain()) {
+            /** @var string $message */
+            $message = $this->language->translateString('TINYMCE_PLAINCMS');
+            return $message;
+        }
 
         $configuration = oxNew(Configuration::class, $this);
         $configuration->build();
@@ -66,6 +70,7 @@ class Loader
      */
     protected function isEnabledForCurrentController(): bool
     {
+        /** @var string[] $aEnabledClasses */
         $aEnabledClasses = $this->getShopConfig()->getConfigParam( "aTinyMCE_classes", []);
 
         return in_array( $this->getShopConfig()->getActiveView()->getClassKey(), $aEnabledClasses);
@@ -109,7 +114,7 @@ class Loader
         $sInit = str_replace(
             "'CONFIG':'VALUES'",
             $configuration->getConfig(),
-            file_get_contents(__DIR__.'/../../../out/scripts/init.js')
+            (string) file_get_contents(__DIR__.'/../../../out/scripts/init.js')
         );
         $smarty = Registry::getUtilsView()->getSmarty();
         $sSufix = ($smarty->_tpl_vars["__oxid_include_dynamic"]) ? '_dynamic' : '';
@@ -131,6 +136,7 @@ class Loader
         $smarty = Registry::getUtilsView()->getSmarty();
         $sSuffix = ($smarty->_tpl_vars["__oxid_include_dynamic"]) ? '_dynamic' : '';
 
+        /** @var array<int, string[]> $aInclude */
         $aInclude = (array) Registry::getConfig()->getGlobalParameter('includes' . $sSuffix);
 
         $aInclude[3][] = Registry::getConfig()->getActiveView()->getViewConfig()->getModuleUrl(
@@ -138,14 +144,17 @@ class Loader
             'out/tinymce/tinymce.min.js'
         );
 
+        /** @var string[] $aExtjs */
         $aExtjs = Registry::getConfig()->getConfigParam('aTinyMCE_extjs', []);
         foreach ($aExtjs as $js) {
             $aInclude[3][] = $js;
         }
 
-        if (strlen(trim(Registry::getConfig()->getConfigParam('sTinyMCE_apikey', '')))) {
+        /** @var string $apiKey */
+        $apiKey = Registry::getConfig()->getConfigParam('sTinyMCE_apikey', '');
+        if (strlen(trim($apiKey))) {
             $aInclude[3][] = "https://cdn.tiny.cloud/1/".
-                trim(Registry::getConfig()->getConfigParam('sTinyMCE_apikey', '')).
+                trim($apiKey).
                 "/tinymce/6/plugins.min.js";
         }
 

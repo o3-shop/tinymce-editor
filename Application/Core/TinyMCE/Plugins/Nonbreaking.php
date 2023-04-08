@@ -30,6 +30,9 @@ class Nonbreaking extends AbstractPlugin
         return 'nonbreaking';
     }
 
+    /**
+     * @return string[]
+     */
     public function getToolbarElements(): array
     {
         return [

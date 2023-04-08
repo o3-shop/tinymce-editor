@@ -34,7 +34,7 @@ class Setup extends AbstractOption
                 editor.options.register("filemanager_url", { processor: "string" });
             }
 JS;
-        return trim(preg_replace('!\s+!', ' ', $js));
+        return trim((string) preg_replace('!\s+!', ' ', $js));
     }
 
     /**

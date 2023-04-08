@@ -1,0 +1,10 @@
+parameters:
+  scanFiles:
+    - .ide-helper.php
+    - ../../o3-shop/shop-ce/source/oxfunctions.php
+  paths:
+    - Application
+  excludePaths:
+    - Application/fileman
+  level: 9
+  phpVersion: 70400

@@ -30,6 +30,9 @@ class Table extends AbstractPlugin
         return 'table';
     }
 
+    /**
+     * @return string[]
+     */
     public function getToolbarElements(): array
     {
         return [

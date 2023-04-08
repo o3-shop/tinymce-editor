@@ -30,6 +30,9 @@ class Pagebreak extends AbstractPlugin
         return 'pagebreak';
     }
 
+    /**
+     * @return string[]
+     */
     public function getToolbarElements(): array
     {
         return [

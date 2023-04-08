@@ -30,6 +30,9 @@ class WordCount extends AbstractPlugin
         return 'wordcount';
     }
 
+    /**
+     * @return string[]
+     */
     public function getToolbarElements(): array
     {
         return [];

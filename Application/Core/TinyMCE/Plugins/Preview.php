@@ -30,6 +30,9 @@ class Preview extends AbstractPlugin
         return 'preview';
     }
 
+    /**
+     * @return string[]
+     */
     public function getToolbarElements(): array
     {
         return [

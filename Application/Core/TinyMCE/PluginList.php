@@ -37,6 +37,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Lists;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Media;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Nonbreaking;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Pagebreak;
+use O3\TinyMCE\Application\Core\TinyMCE\Plugins\PluginInterface;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Preview;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Quickbars;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Roxy;
@@ -47,6 +48,9 @@ use O3\TinyMCE\Application\Core\TinyMCE\Plugins\WordCount;
 
 class PluginList
 {
+    /**
+     * @return array<string, PluginInterface>
+     */
     public function get(): array
     {
         return [

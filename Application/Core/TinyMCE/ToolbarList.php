@@ -31,9 +31,13 @@ use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Blocks;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Indent;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\Lists;
 use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\RemoveFormat;
+use O3\TinyMCE\Application\Core\TinyMCE\Toolbar\ToolbarInterface;
 
 class ToolbarList
 {
+    /**
+     * @return array<int, array<string, ToolbarInterface>>
+     */
     public function get(): array
     {
         return [

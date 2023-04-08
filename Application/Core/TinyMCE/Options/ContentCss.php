@@ -36,12 +36,15 @@ class ContentCss extends AbstractOption
 
     public function get(): string
     {
+        /** @var string $theme */
+        $theme = Registry::getConfig()->getConfigParam('sTheme');
+
         return implode(
             ',',
             [
                 $this->darkMode ?
                     'dark' :
-                    '/out/'.strtolower(Registry::getConfig()->getConfigParam('sTheme')).'/src/css/styles.min.css'
+                    '/out/'.strtolower($theme).'/src/css/styles.min.css'
             ]
         );
     }

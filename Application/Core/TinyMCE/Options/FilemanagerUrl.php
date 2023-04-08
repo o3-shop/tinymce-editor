@@ -35,6 +35,7 @@ class FilemanagerUrl extends AbstractOption
 
     public function get(): string
     {
+        /** @var string $sFilemanagerKey */
         $sFilemanagerKey = md5_file(Registry::getConfig()->getConfigParam("sShopDir")."/config.inc.php");
         Registry::get(UtilsServer::class)->setOxCookie("filemanagerkey", $sFilemanagerKey);
 

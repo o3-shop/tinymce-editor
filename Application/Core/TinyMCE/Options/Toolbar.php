@@ -48,7 +48,11 @@ class Toolbar extends AbstractOption
             $this->getMultiLineToolbar($toolbarList);
     }
 
-    protected function getSingleLineToolbar($toolbarList): string
+    /**
+     * @param ToolbarList $toolbarList
+     * @return string
+     */
+    protected function getSingleLineToolbar(ToolbarList $toolbarList): string
     {
         $all = [];
 
@@ -90,7 +94,11 @@ class Toolbar extends AbstractOption
         return $toolbarElements . ' | ' . $pluginToolbarElements;
     }
 
-    protected function getMultiLineToolbar($toolbarList): string
+    /**
+     * @param ToolbarList $toolbarList
+     * @return string
+     */
+    protected function getMultiLineToolbar(ToolbarList $toolbarList): string
     {
         $list = [];
 

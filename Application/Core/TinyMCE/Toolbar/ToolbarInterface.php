@@ -25,5 +25,8 @@ namespace O3\TinyMCE\Application\Core\TinyMCE\Toolbar;
 
 interface ToolbarInterface
 {
+    /**
+     * @return string[]
+     */
     public function getButtons(): array;
 }

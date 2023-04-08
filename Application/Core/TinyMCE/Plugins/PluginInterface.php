@@ -27,6 +27,9 @@ interface PluginInterface
 {
     public function getPluginName(): string;
 
+    /**
+     * @return string[]
+     */
     public function getToolbarElements(): array;
 
     public function getScriptPath(): ?string;

@@ -53,6 +53,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\ToolbarSticky;
 class Configuration
 {
     protected Loader $loader;
+    /** @var array<String, String> */
     protected array $options = [];
 
     public function __construct(Loader $loader)
@@ -89,6 +90,10 @@ class Configuration
     {
         $sConfig = '';
 
+        /**
+         * @var string $param
+         * @var string $value
+         */
         foreach ($this->options as $param => $value) {
             $sConfig .= "$param: $value, ";
         }

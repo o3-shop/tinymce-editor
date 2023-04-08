@@ -25,7 +25,7 @@ namespace O3\TinyMCE\Application\Core\TinyMCE;
 
 class Utils
 {
-    public function quote($string): string
+    public function quote(string $string): string
     {
         return '"'.addslashes($string).'"';
     }
