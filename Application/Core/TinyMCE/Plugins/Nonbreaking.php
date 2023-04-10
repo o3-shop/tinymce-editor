@@ -36,7 +36,7 @@ class Nonbreaking extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'nonbreaking'
+            'nonbreaking',
         ];
     }
 }

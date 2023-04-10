@@ -1,6 +1,6 @@
 <?php
 /*
-  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE. 
+  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
   Can be easily integrated with any other WYSIWYG editor or CMS.
 
   Copyright (C) 2013, RoxyFileman.com - Lyubomir Arsov. All rights reserved.
@@ -30,7 +30,7 @@ $isAjax = (isset($_POST['method']) && $_POST['method'] == 'ajax');
 $path = RoxyFile::FixPath(trim(empty($_POST['d']) ? getFilesPath() : $_POST['d']));
 verifyPath($path);
 $res = '';
-$errors = $errorsExt = array();
+$errors = $errorsExt = [];
 
 if (is_dir(fixPath($path))) {
     if (!empty($_FILES['files']) && is_array($_FILES['files']['tmp_name'])) {

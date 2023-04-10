@@ -20,7 +20,7 @@
  */
 
 $sLangName = 'Deutsch';
-$aLang = array(
+$aLang = [
    'charset'                                => 'UTF-8',
    'TINYMCE_TOGGLE'                         => 'Editor zeigen/verstecken',
    'TINYMCE_PLAINCMS'                       => '<b class="errorbox">Der Editor wurde für diese Seite deaktiviert, weil sie keine HTML Formatierung enthalten darf </b>',
@@ -33,4 +33,4 @@ $aLang = array(
    'SHOP_MODULE_aTinyMCE_extjs'             => '<h3>Externe JS Abhängigkeiten</h3>',
    'HELP_SHOP_MODULE_aTinyMCE_extjs'        => 'Komplette URL mit https://.',
    'SHOP_MODULE_GROUP_tinyMceSettings'      => 'TinyMCE Einstellungen &amp; Plugins',
-);
+];

@@ -75,7 +75,9 @@ class Configuration
 
     protected function addOption(OptionInterface $optionInstance): void
     {
-        if (!$optionInstance->requireRegistration()) return;
+        if (!$optionInstance->requireRegistration()) {
+            return;
+        }
 
         $option = $optionInstance->get();
 
@@ -106,10 +108,10 @@ class Configuration
      */
     protected function addIntegrateOptions(): void
     {
-        $this->addOption(oxNew( Setup::class, $this->loader));
-        $this->addOption(oxNew( BaseUrl::class, $this->loader));
-        $this->addOption(oxNew( CacheSuffix::class, $this->loader));
-        $this->addOption(oxNew( Selector::class, $this->loader));
+        $this->addOption(oxNew(Setup::class, $this->loader));
+        $this->addOption(oxNew(BaseUrl::class, $this->loader));
+        $this->addOption(oxNew(CacheSuffix::class, $this->loader));
+        $this->addOption(oxNew(Selector::class, $this->loader));
     }
 
     protected function addGuiOptions(): void
@@ -127,37 +129,37 @@ class Configuration
 
     protected function addContentAppearance(): void
     {
-        $this->addOption(oxNew(ContentCss::class,$this->loader));
+        $this->addOption(oxNew(ContentCss::class, $this->loader));
     }
 
     protected function addContentFiltering(): void
     {
-        $this->addOption(oxNew(EntityEncoding::class,$this->loader));
-        $this->addOption(oxNew(Protect::class,$this->loader));
+        $this->addOption(oxNew(EntityEncoding::class, $this->loader));
+        $this->addOption(oxNew(Protect::class, $this->loader));
     }
 
     protected function addLocalizationOptions(): void
     {
-        $this->addOption(oxNew( Language::class, $this->loader));
+        $this->addOption(oxNew(Language::class, $this->loader));
     }
 
     protected function addUrlHandling(): void
     {
-        $this->addOption(oxNew( DocumentBaseUrl::class, $this->loader));
-        $this->addOption(oxNew( RelativeUrls::class, $this->loader));
+        $this->addOption(oxNew(DocumentBaseUrl::class, $this->loader));
+        $this->addOption(oxNew(RelativeUrls::class, $this->loader));
     }
 
     protected function addPlugins(): void
     {
-        $this->addOption(oxNew( ImageAdvtab::class, $this->loader));
-        $this->addOption(oxNew( Plugins::class, $this->loader));
-        $this->addOption(oxNew( ExternalPlugins::class, $this->loader));
-        $this->addOption(oxNew( FilemanagerUrl::class, $this->loader));
+        $this->addOption(oxNew(ImageAdvtab::class, $this->loader));
+        $this->addOption(oxNew(Plugins::class, $this->loader));
+        $this->addOption(oxNew(ExternalPlugins::class, $this->loader));
+        $this->addOption(oxNew(FilemanagerUrl::class, $this->loader));
         $this->addOption(oxNew(QuickbarsInsertToolbar::class, $this->loader));
     }
 
     protected function addToolbar(): void
     {
-        $this->addOption(oxNew( Toolbar::class, $this->loader));
+        $this->addOption(oxNew(Toolbar::class, $this->loader));
     }
 }

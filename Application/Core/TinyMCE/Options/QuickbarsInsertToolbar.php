@@ -34,17 +34,17 @@ class QuickbarsInsertToolbar extends AbstractOption
     public function get(): string
     {
         return 'false';
-/*
-        return implode(
-            ' | ',
-            [
-                // 'quickimage', // disabled, as images are only inserted inline. This is too much for a typical database field length.
-                'quicktable',
-                'hr',
-                'pagebreak'
-            ]
-        );
-*/
+        /*
+                return implode(
+                    ' | ',
+                    [
+                        // 'quickimage', // disabled, as images are only inserted inline. This is too much for a typical database field length.
+                        'quicktable',
+                        'hr',
+                        'pagebreak'
+                    ]
+                );
+        */
     }
 
     public function mustQuote(): bool

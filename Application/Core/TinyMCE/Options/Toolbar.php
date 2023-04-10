@@ -34,9 +34,9 @@ class Toolbar extends AbstractOption
 
     protected bool $forceSingleLineToolbar = true;
 
-    public function __construct( Loader $loader )
+    public function __construct(Loader $loader)
     {
-        parent::__construct( $loader );
+        parent::__construct($loader);
     }
 
     public function get(): string

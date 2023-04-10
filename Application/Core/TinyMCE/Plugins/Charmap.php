@@ -33,7 +33,7 @@ class Charmap extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'charmap'
+            'charmap',
         ];
     }
 }

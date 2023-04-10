@@ -33,7 +33,7 @@ class Image extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'image'
+            'image',
         ];
     }
 }

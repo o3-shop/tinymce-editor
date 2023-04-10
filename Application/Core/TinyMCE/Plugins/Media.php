@@ -33,7 +33,7 @@ class Media extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'media'
+            'media',
         ];
     }
 }

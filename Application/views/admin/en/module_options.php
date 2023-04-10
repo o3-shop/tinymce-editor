@@ -20,7 +20,7 @@
  */
 
 $sLangName = 'English';
-$aLang = array(
+$aLang = [
    'charset'                                => 'UTF-8',
    'TINYMCE_TOGGLE'                         => 'toggle editor',
    'TINYMCE_PLAINCMS'                       => '<b class="errorbox">The editor was disabled for this page because it may not contain HTML code</b>',
@@ -33,4 +33,4 @@ $aLang = array(
    'SHOP_MODULE_aTinyMCE_extjs'             => '<h3>external JS dependencies</h3> (e.g. for plugins)',
    'HELP_SHOP_MODULE_aTinyMCE_extjs'        => 'Full URL with https://.',
    'SHOP_MODULE_GROUP_tinyMceSettings'      => 'TinyMCE Settings &amp; Plugins',
-);
+];

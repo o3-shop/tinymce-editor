@@ -30,7 +30,7 @@ class CopyPaste extends AbstractToolbar
         return [
             'cut',
             'copy',
-            'paste'
+            'paste',
         ];
     }
 }

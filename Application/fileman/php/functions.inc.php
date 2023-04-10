@@ -1,6 +1,6 @@
 <?php
 /*
-  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE. 
+  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
   Can be easily integrated with any other WYSIWYG editor or CMS.
 
   Copyright (C) 2013, RoxyFileman.com - Lyubomir Arsov. All rights reserved.
@@ -32,8 +32,9 @@ function t(string $key): string
         if (defined('LANG')) {
             if (LANG == 'auto') {
                 $lang = strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
-                if (is_file($langPath . $lang . '.json'))
+                if (is_file($langPath . $lang . '.json')) {
                     $file = $lang . '.json';
+                }
             } elseif (is_file($langPath . LANG . '.json')) {
                 $file = LANG . '.json';
             }
@@ -116,8 +117,9 @@ function getFilesPath(): string
     if (!$ret) {
         $ret = RoxyFile::FixPath(BASE_PATH . '/Uploads');
         $tmp = $_SERVER['DOCUMENT_ROOT'];
-        if (mb_substr($tmp, -1) == '/' || mb_substr($tmp, -1) == '\\')
+        if (mb_substr($tmp, -1) == '/' || mb_substr($tmp, -1) == '\\') {
             $tmp = mb_substr($tmp, 0, -1);
+        }
         $ret = str_replace(RoxyFile::FixPath($tmp), '', $ret);
     }
     return $ret;
@@ -146,7 +148,7 @@ function listDirectory(string $path): array
 
 class RoxyFile
 {
-    static public function CheckWritable(string $dir): bool
+    public static function CheckWritable(string $dir): bool
     {
         $ret = false;
         if (self::CreatePath($dir)) {
@@ -167,16 +169,17 @@ class RoxyFile
      * @param $path
      * @return bool
      */
-    static public function CreatePath(string $path): bool
+    public static function CreatePath(string $path): bool
     {
-        if (is_dir($path))
+        if (is_dir($path)) {
             return true;
-        $prev_path = substr($path, 0, strrpos($path, '/', -2) + 1 );
+        }
+        $prev_path = substr($path, 0, strrpos($path, '/', -2) + 1);
         $return = self::createPath($prev_path);
         return $return && is_writable($prev_path) && mkdir($path);
     }
 
-    static function CanUploadFile(string $filename): bool
+    public static function CanUploadFile(string $filename): bool
     {
         $forbidden = array_filter((array) preg_split('/[^\d\w]+/', strtolower(FORBIDDEN_UPLOADS)));
         $allowed = array_filter((array) preg_split('/[^\d\w]+/', strtolower(ALLOWED_UPLOADS)));
@@ -189,7 +192,7 @@ class RoxyFile
         return false;
     }
 
-    static public function ZipAddDir(string $path, ZipArchive $zip, string $zipPath): void
+    public static function ZipAddDir(string $path, ZipArchive $zip, string $zipPath): void
     {
         $d = opendir($path);
         $zipPath = str_replace('//', '/', $zipPath);
@@ -198,8 +201,9 @@ class RoxyFile
         }
         if (is_resource($d)) {
             while (($f = readdir($d)) !== false) {
-                if ($f == '.' || $f == '..')
+                if ($f == '.' || $f == '..') {
                     continue;
+                }
                 $filePath = $path . '/' . $f;
                 if (is_file($filePath)) {
                     $zip->addFile($filePath, ($zipPath ? $zipPath . '/' : '') . $f);
@@ -213,7 +217,7 @@ class RoxyFile
         }
     }
 
-    static public function ZipDir(string $path, string $zipFile, string $zipPath = ''): void
+    public static function ZipDir(string $path, string $zipFile, string $zipPath = ''): void
     {
         $zip = new ZipArchive();
         $zip->open($zipFile, ZIPARCHIVE::CREATE);
@@ -221,7 +225,7 @@ class RoxyFile
         $zip->close();
     }
 
-    static public function IsImage(string $fileName): bool
+    public static function IsImage(string $fileName): bool
     {
         $ext = strtolower(self::GetExtension($fileName));
 
@@ -230,7 +234,7 @@ class RoxyFile
         return in_array($ext, $imageExtensions);
     }
 
-    static public function IsFlash(string $fileName): bool
+    public static function IsFlash(string $fileName): bool
     {
         $ext = strtolower(self::GetExtension($fileName));
 
@@ -245,7 +249,7 @@ class RoxyFile
      * @param int $filesize
      * @return string
      */
-    static public function FormatFileSize(int $filesize): string
+    public static function FormatFileSize(int $filesize): string
     {
         $unit = 'B';
         if ($filesize > 1024) {
@@ -271,7 +275,7 @@ class RoxyFile
      * @param string $filename
      * @return string
      */
-    static public function GetMIMEType(string $filename): string
+    public static function GetMIMEType(string $filename): string
     {
         $ext = self::GetExtension($filename);
 
@@ -313,7 +317,7 @@ class RoxyFile
      * @param string $sep
      * @return string
      */
-    static public function CleanupFilename(string $filename, string $sep = '_'): string
+    public static function CleanupFilename(string $filename, string $sep = '_'): string
     {
         $str = '';
         if (strpos($filename, '.')) {
@@ -340,7 +344,7 @@ class RoxyFile
      * @param string $filename
      * @return string
      */
-    static public function GetExtension(string $filename): string
+    public static function GetExtension(string $filename): string
     {
         $ext = '';
 
@@ -357,7 +361,7 @@ class RoxyFile
      * @param string $filename
      * @return string
      */
-    static public function GetName(string $filename): string
+    public static function GetName(string $filename): string
     {
         $tmp = mb_strpos($filename, '?');
         if ($tmp !== false) {
@@ -373,7 +377,7 @@ class RoxyFile
         return $name;
     }
 
-    static public function GetFullName(string $filename): string
+    public static function GetFullName(string $filename): string
     {
         $tmp = mb_strpos($filename, '?');
         if ($tmp !== false) {
@@ -382,7 +386,7 @@ class RoxyFile
         return basename($filename);
     }
 
-    static public function FixPath(string $path): string
+    public static function FixPath(string $path): string
     {
         $path = (string) mb_ereg_replace('[\\\/]+', '/', $path);
         $path = (string) mb_ereg_replace('\.\.\/', '', $path);
@@ -397,7 +401,7 @@ class RoxyFile
      * @param string $filename
      * @return string
      */
-    static public function MakeUniqueFilename(string $dir, string $filename): string
+    public static function MakeUniqueFilename(string $dir, string $filename): string
     {
         ;
         $dir .= '/';
@@ -429,7 +433,7 @@ class RoxyFile
      * @param string $name
      * @return string
      */
-    static public function MakeUniqueDirname(string $dir, string $name): string
+    public static function MakeUniqueDirname(string $dir, string $name): string
     {
         $dir = self::FixPath($dir . '/');
         $name = mb_ereg_replace(' - Copy \\d+$', '', $name);
@@ -463,11 +467,11 @@ class RoxyImage
 
     public static function OutputImage($img, string $type, ?string $destination = '', int $quality = 90)
     {
-        if(is_string($img)) {
+        if (is_string($img)) {
             $img = self::GetImage($img);
         }
 
-        switch(strtolower($type)){
+        switch (strtolower($type)) {
             case 'png':
                 imagepng($img, $destination);
                 break;
@@ -497,8 +501,7 @@ class RoxyImage
         int $width = 150,
         int $height = 0,
         int $quality = 90
-    ): void
-    {
+    ): void {
         $tmp = (array) getimagesize($source);
         $w = $tmp[0];
         $h = $tmp[1];
@@ -534,8 +537,7 @@ class RoxyImage
         int $width,
         int $height,
         int $quality = 90
-    ): void
-    {
+    ): void {
         $tmp = (array) getimagesize($source);
         $w = $tmp[0];
         $h = $tmp[1];
@@ -576,8 +578,7 @@ class RoxyImage
         int $width,
         int $height,
         int $quality = 90
-    ): void
-    {
+    ): void {
         $thumbImg = imagecreatetruecolor($width, $height);
         $img = self::GetImage($source);
 

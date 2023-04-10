@@ -34,7 +34,7 @@ class Link extends AbstractPlugin
     {
         return [
             'link',
-            'unlink'
+            'unlink',
         ];
     }
 }

@@ -35,15 +35,15 @@ class Plugins extends AbstractOption
         $pluginList = oxNew(PluginList::class);
 
         return implode(' ', array_filter(
-                array_map(
-                function (PluginInterface $plugin) {
+            array_map(
+                    function (PluginInterface $plugin) {
                     return $plugin->requireRegistration() ?
                         $plugin->getPluginName() :
                         null
                     ;
                 },
-                $pluginList->get()
-            )
+                    $pluginList->get()
+                )
         ));
     }
 

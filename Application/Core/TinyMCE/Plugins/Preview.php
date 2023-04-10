@@ -36,7 +36,7 @@ class Preview extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'preview'
+            'preview',
         ];
     }
 }

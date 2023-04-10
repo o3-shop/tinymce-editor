@@ -56,7 +56,7 @@ class ToolbarList
                 'indent'        => oxNew(Indent::class),
                 'blockquote'    => oxNew(Blockquote::class),
                 'removeformat'  => oxNew(RemoveFormat::class),
-            ]
+            ],
         ];
     }
 }

@@ -44,7 +44,7 @@ class ContentCss extends AbstractOption
             [
                 $this->darkMode ?
                     'dark' :
-                    '/out/'.strtolower($theme).'/src/css/styles.min.css'
+                    '/out/'.strtolower($theme).'/src/css/styles.min.css',
             ]
         );
     }

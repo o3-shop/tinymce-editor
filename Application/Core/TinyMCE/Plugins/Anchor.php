@@ -33,7 +33,7 @@ class Anchor extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'anchor'
+            'anchor',
         ];
     }
 }

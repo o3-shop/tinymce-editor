@@ -36,7 +36,7 @@ class Language extends AbstractOption
 
         $oLang = $this->loader->getLanguage();
 
-        $aLang = array(
+        $aLang = [
             "cs" => "cs",
             "da" => "da",
             "de" => "de",
@@ -44,9 +44,9 @@ class Language extends AbstractOption
             "fr" => "fr_FR",
             "it" => "it_IT",
             "nl" => "nl",
-            "ru" => "ru"
-        );
-        return $aLang[ $oLang->getLanguageAbbr( (int) $oLang->getTplLanguage() ) ] ?? "en";
+            "ru" => "ru",
+        ];
+        return $aLang[ $oLang->getLanguageAbbr((int) $oLang->getTplLanguage()) ] ?? "en";
     }
 
     public function mustQuote(): bool

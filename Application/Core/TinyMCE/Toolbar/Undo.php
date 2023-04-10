@@ -32,7 +32,7 @@ class Undo extends AbstractToolbar
     {
         return [
             'undo',
-            'redo'
+            'redo',
         ];
     }
 }

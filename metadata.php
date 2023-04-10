@@ -29,21 +29,21 @@ $aModule = [
     'author' => 'Marat Bedoev, O3-Shop',
     'url' => 'https://www.o3-shop.com/',
     'extend' => [
-        OxidEsales\Eshop\Core\ViewConfig::class => O3\TinyMCE\Application\Core\ViewConfig::class
+        OxidEsales\Eshop\Core\ViewConfig::class => O3\TinyMCE\Application\Core\ViewConfig::class,
     ],
     'controllers' => [
-        'tinyfilemanager'   => O3\TinyMCE\Application\Controller\Admin\TinyFileManager::class
+        'tinyfilemanager'   => O3\TinyMCE\Application\Controller\Admin\TinyFileManager::class,
     ],
     'templates' => [
         'TinyFilemanager.tpl'   => 'o3-shop/tinymce-editor/Application/views/admin/filemanager.tpl',
-        'EditorSwitch.tpl'      => 'o3-shop/tinymce-editor/Application/views/admin/editorswitch.tpl'
+        'EditorSwitch.tpl'      => 'o3-shop/tinymce-editor/Application/views/admin/editorswitch.tpl',
     ],
     'blocks' => [
         [
             'template' => 'bottomnaviitem.tpl',
             'block' => 'admin_bottomnaviitem',
-            'file' => 'Application/views/blocks/admin/bottomnaviitem_admin_bottomnaviitem.tpl'
-        ]
+            'file' => 'Application/views/blocks/admin/bottomnaviitem_admin_bottomnaviitem.tpl',
+        ],
     ],
     'settings' => [
         /* enabling tinyMCE for these classes */
@@ -56,30 +56,30 @@ $aModule = [
                 "category_text",
                 "content_main",
                 "newsletter_main",
-                "news_text"
+                "news_text",
             ],
-            'position' => 0
+            'position' => 0,
         ],
         [
             'group' => 'tinyMceMain',
             'name' => 'blTinyMCE_filemanager',
             'type' => 'bool',
             'value' => true,
-            'position' => 2
+            'position' => 2,
         ],
         [
             'group' => 'tinyMceMain',
             'name' => 'sTinyMCE_apikey',
             'type' => 'str',
             'value' => '',
-            'position' => 3
+            'position' => 3,
         ],
         [
             'group' => 'tinyMceMain',
             'name' => 'aTinyMCE_extjs',
             'type' => 'arr',
             'value' => [],
-            'position' => 4
-        ]
-    ]
+            'position' => 4,
+        ],
+    ],
 ];

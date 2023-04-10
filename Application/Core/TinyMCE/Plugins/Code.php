@@ -33,7 +33,7 @@ class Code extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'code'
+            'code',
         ];
     }
 }

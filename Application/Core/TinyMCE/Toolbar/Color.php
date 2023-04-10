@@ -29,7 +29,7 @@ class Color extends AbstractToolbar
     {
         return [
             'forecolor',
-            'backcolor'
+            'backcolor',
         ];
     }
 }

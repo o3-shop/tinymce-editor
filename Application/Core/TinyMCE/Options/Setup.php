@@ -30,10 +30,10 @@ class Setup extends AbstractOption
     public function get(): string
     {
         $js = <<<JS
-            (editor) => {
-                editor.options.register("filemanager_url", { processor: "string" });
-            }
-JS;
+                        (editor) => {
+                            editor.options.register("filemanager_url", { processor: "string" });
+                        }
+            JS;
         return trim((string) preg_replace('!\s+!', ' ', $js));
     }
 

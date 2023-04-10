@@ -35,7 +35,7 @@ class FullPage extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'fullpage'
+            'fullpage',
         ];
     }
 

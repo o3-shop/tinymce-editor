@@ -36,7 +36,7 @@ class FullScreen extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'fullscreen'
+            'fullscreen',
         ];
     }
 

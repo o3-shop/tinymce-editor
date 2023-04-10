@@ -47,7 +47,9 @@ class Loader
      */
     public function getEditorCode(): string
     {
-        if (!$this->isEnabledForCurrentController()) return '';
+        if (!$this->isEnabledForCurrentController()) {
+            return '';
+        }
 
         if ($this->contentIsPlain()) {
             /** @var string $message */
@@ -71,9 +73,9 @@ class Loader
     protected function isEnabledForCurrentController(): bool
     {
         /** @var string[] $aEnabledClasses */
-        $aEnabledClasses = $this->getShopConfig()->getConfigParam( "aTinyMCE_classes", []);
+        $aEnabledClasses = $this->getShopConfig()->getConfigParam("aTinyMCE_classes", []);
 
-        return in_array( $this->getShopConfig()->getActiveView()->getClassKey(), $aEnabledClasses);
+        return in_array($this->getShopConfig()->getActiveView()->getClassKey(), $aEnabledClasses);
     }
 
     /**
@@ -82,7 +84,7 @@ class Loader
     protected function contentIsPlain(): bool
     {
         /** @var BaseModel|Content $oEditObject */
-        $oEditObject = $this->getShopConfig()->getActiveView()->getViewDataElement( "edit" );
+        $oEditObject = $this->getShopConfig()->getActiveView()->getViewDataElement("edit");
         return $oEditObject instanceof Content && $oEditObject->isPlain();
     }
 

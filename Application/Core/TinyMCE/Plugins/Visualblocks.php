@@ -36,7 +36,7 @@ class Visualblocks extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'visualblocks'
+            'visualblocks',
         ];
     }
 }

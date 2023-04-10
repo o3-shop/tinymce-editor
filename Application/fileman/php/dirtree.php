@@ -1,6 +1,6 @@
 <?php
 /*
-  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE. 
+  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
   Can be easily integrated with any other WYSIWYG editor or CMS.
 
   Copyright (C) 2013, RoxyFileman.com - Lyubomir Arsov. All rights reserved.
@@ -49,12 +49,12 @@ function getFilesNumber(string $path, string $type): array
         }
     }
 
-    return array('files' => $files, 'dirs' => $dirs);
+    return ['files' => $files, 'dirs' => $dirs];
 }
 
 function GetDirs(string $path, string $type): void
 {
-    $ret = $sort = array();
+    $ret = $sort = [];
     $files = listDirectory(fixPath($path));
     foreach ($files as $f) {
         $fullPath = $path . '/' . $f;
@@ -62,7 +62,7 @@ function GetDirs(string $path, string $type): void
             continue;
         }
         $tmp = getFilesNumber(fixPath($fullPath), $type);
-        $ret[$fullPath] = array('path' => $fullPath, 'files' => $tmp['files'], 'dirs' => $tmp['dirs']);
+        $ret[$fullPath] = ['path' => $fullPath, 'files' => $tmp['files'], 'dirs' => $tmp['dirs']];
         $sort[$fullPath] = $f;
     }
     natcasesort($sort);

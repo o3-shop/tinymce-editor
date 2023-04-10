@@ -36,7 +36,7 @@ class Table extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'table'
+            'table',
         ];
     }
 }

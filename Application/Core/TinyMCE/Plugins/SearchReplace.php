@@ -36,7 +36,7 @@ class SearchReplace extends AbstractPlugin
     public function getToolbarElements(): array
     {
         return [
-            'searchreplace'
+            'searchreplace',
         ];
     }
 }
