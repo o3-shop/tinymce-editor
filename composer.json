@@ -1,7 +1,6 @@
 {
   "name": "o3-shop/tinymce-editor",
-  "version": "1.0",
-  "description": "TinyMCE 5 Integration for O3-Shop",
+  "description": "TinyMCE 6 Integration for O3-Shop",
   "type": "oxideshop-module",
   "homepage": "https://www.o3-shop.com/",
   "license": [
@@ -21,7 +20,10 @@
     "oxideshop": {
       "blacklist-filter": [
         "composer.json",
-        "README.md"
+        "CHANGELOG.md",
+        "README.md",
+        ".php-cs-fixer.php",
+        "phpstan.neon"
       ],
       "target-directory": "o3-shop/tinymce-editor"
     }
@@ -30,7 +32,7 @@
     "exclude": ["/build"]
   },
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.4",
     "o3-shop/shop-ce": "^1.0"
   },
   "autoload": {

@@ -80,7 +80,7 @@ SOFTWARE.
 ```
 
 ### Roxy file manager [GPL v3]
-(status: 2021-05-06)
+(status: 2023-04-07)
 
 ```
 GNU GENERAL PUBLIC LICENSE
