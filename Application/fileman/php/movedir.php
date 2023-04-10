@@ -26,21 +26,21 @@ include 'functions.inc.php';
 verifyAction('MOVEDIR');
 checkAccess('MOVEDIR');
 
-$path = RoxyFile::FixPath(trim(empty($_GET['d'])?'':$_GET['d']));
-$newPath = RoxyFile::FixPath(trim(empty($_GET['n'])?'':$_GET['n']));
+$path = RoxyFile::FixPath(trim(empty($_GET['d']) ? '' : $_GET['d']));
+$newPath = RoxyFile::FixPath(trim(empty($_GET['n']) ? '' : $_GET['n']));
 verifyPath($path);
 verifyPath($newPath);
 
-if(is_dir(fixPath($path))){
-  if(mb_strpos($newPath, $path) === 0)
-    echo getErrorRes(t('E_CannotMoveDirToChild'));
-  elseif(file_exists(fixPath($newPath).'/'.basename($path)))
-    echo getErrorRes(t('E_DirAlreadyExists'));
-  elseif(rename(fixPath($path), fixPath($newPath).'/'.basename($path)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_MoveDir').' '.basename($path));
+if (is_dir(fixPath($path))) {
+    if (mb_strpos($newPath, $path) === 0) {
+        echo getErrorRes(t('E_CannotMoveDirToChild'));
+    } elseif (file_exists(fixPath($newPath) . '/' . basename($path))) {
+        echo getErrorRes(t('E_DirAlreadyExists'));
+    } elseif (rename(fixPath($path), fixPath($newPath) . '/' . basename($path))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_MoveDir') . ' ' . basename($path));
+    }
+} else {
+    echo getErrorRes(t('E_MoveDirInvalisPath'));
 }
-else
-  echo getErrorRes(t('E_MoveDirInvalisPath'));
-?>

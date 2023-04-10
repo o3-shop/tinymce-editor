@@ -29,18 +29,17 @@ header("Cache-Control: max-age=3600");
 verifyAction('GENERATETHUMB');
 checkAccess('GENERATETHUMB');
 
-$path = RoxyFile::FixPath(urldecode(empty($_GET['f'])?'':$_GET['f']));
+$path = RoxyFile::FixPath(urldecode(empty($_GET['f']) ? '' : $_GET['f']));
 verifyPath($path);
 
-@chmod(fixPath(dirname($path)), octdec(DIRPERMISSIONS));
-@chmod(fixPath($path), octdec(FILEPERMISSIONS));
+@chmod(fixPath(dirname($path)), (int) octdec(DIRPERMISSIONS));
+@chmod(fixPath($path), (int) octdec(FILEPERMISSIONS));
 
-$w = intval(empty($_GET['width'])?'100':$_GET['width']);
-$h = intval(empty($_GET['height'])?'0':$_GET['height']);
+$w = intval(empty($_GET['width']) ? '100' : $_GET['width']);
+$h = intval(empty($_GET['height']) ? '0' : $_GET['height']);
 
 header('Content-type: '.RoxyFile::GetMIMEType(basename($path)));
 if($w && $h)
-  RoxyImage::CropCenter(fixPath($path), null, $w, $h);
-else 
-  RoxyImage::Resize(fixPath($path), null, $w, $h);
-?>
+    RoxyImage::CropCenter(fixPath($path), null, $w, $h);
+else
+    RoxyImage::Resize(fixPath($path), null, $w, $h);

@@ -26,19 +26,19 @@ include 'functions.inc.php';
 verifyAction('DELETEDIR');
 checkAccess('DELETEDIR');
 
-$path = RoxyFile::FixPath(trim(empty($_GET['d'])?'':$_GET['d']));
+$path = RoxyFile::FixPath(trim(empty($_GET['d']) ? '' : $_GET['d']));
 verifyPath($path);
 
-if(is_dir(fixPath($path))){
-  if(fixPath($path.'/') == fixPath(getFilesPath().'/'))
-    echo getErrorRes(t('E_CannotDeleteRoot'));
-  elseif(count(glob(fixPath($path)."/*")))
-    echo getErrorRes(t('E_DeleteNonEmpty'));
-  elseif(rmdir(fixPath($path)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_CannotDeleteDir').' '.basename($path));
+if (is_dir(fixPath($path))) {
+    if (fixPath($path . '/') == fixPath(getFilesPath() . '/')) {
+        echo getErrorRes(t('E_CannotDeleteRoot'));
+    } elseif (count((array) glob(fixPath($path) . "/*"))) {
+        echo getErrorRes(t('E_DeleteNonEmpty'));
+    } elseif (rmdir(fixPath($path))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_CannotDeleteDir') . ' ' . basename($path));
+    }
+} else {
+    echo getErrorRes(t('E_DeleteDirInvalidPath') . ' ' . $path);
 }
-else
-  echo getErrorRes(t('E_DeleteDirInvalidPath').' '.$path);
-?>

@@ -20,7 +20,8 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-function checkAccess($action) {
+function checkAccess(string $action): void
+{
+    unset($action);
     if($_COOKIE['filemanagerkey'] !== md5_file("../../../../../../config.inc.php")) die('nice try, noob.');
 }
-?>

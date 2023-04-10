@@ -26,25 +26,24 @@ include 'functions.inc.php';
 verifyAction('MOVEFILE');
 checkAccess('MOVEFILE');
 
-$path = RoxyFile::FixPath(trim(empty($_POST['f'])?'':$_POST['f']));
-$newPath = RoxyFile::FixPath(trim(empty($_POST['n'])?'':$_POST['n']));
-if(!$newPath)
-  $newPath = getFilesPath();
+$path = RoxyFile::FixPath(trim(empty($_POST['f']) ? '' : $_POST['f']));
+$newPath = RoxyFile::FixPath(trim(empty($_POST['n']) ? '' : $_POST['n']));
+if (!$newPath) {
+    $newPath = getFilesPath();
+}
 verifyPath($path);
 verifyPath($newPath);
 
-if(!RoxyFile::CanUploadFile(basename($newPath))) {
-	echo getErrorRes(t('E_FileExtensionForbidden'));
+if (!RoxyFile::CanUploadFile(basename($newPath))) {
+    echo getErrorRes(t('E_FileExtensionForbidden'));
+} elseif (is_file(fixPath($path))) {
+    if (file_exists(fixPath($newPath))) {
+        echo getErrorRes(t('E_MoveFileAlreadyExists') . ' ' . basename($newPath));
+    } elseif (rename(fixPath($path), fixPath($newPath))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_MoveFile') . ' ' . basename($path));
+    }
+} else {
+    echo getErrorRes(t('E_MoveFileInvalisPath'));
 }
-elseif(is_file(fixPath($path))){
-  if(file_exists(fixPath($newPath)))
-    echo getErrorRes(t('E_MoveFileAlreadyExists').' '.basename($newPath));
-  elseif(rename(fixPath($path), fixPath($newPath)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_MoveFile').' '.basename($path));
-}
-else {
-  echo getErrorRes(t('E_MoveFileInvalisPath'));
-}
-?>

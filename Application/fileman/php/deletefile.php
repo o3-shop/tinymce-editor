@@ -29,12 +29,12 @@ checkAccess('DELETEFILE');
 $path = RoxyFile::FixPath(trim($_POST['f']));
 verifyPath($path);
 
-if(is_file(fixPath($path))){
-  if(unlink(fixPath($path)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_DeletеFile').' '.basename($path));
+if (is_file(fixPath($path))) {
+    if (unlink(fixPath($path))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_DeletеFile') . ' ' . basename($path));
+    }
+} else {
+    echo getErrorRes(t('E_DeleteFileInvalidPath'));
 }
-else
-  echo getErrorRes(t('E_DeleteFileInvalidPath'));
-?>
