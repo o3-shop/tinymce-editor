@@ -32,6 +32,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\EntityEncoding;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ExternalPlugins;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\FilemanagerUrl;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ImageAdvtab;
+use O3\TinyMCE\Application\Core\TinyMCE\Options\InitInstanceCallback;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Language;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\MaxHeight;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\MaxWidth;
@@ -112,6 +113,7 @@ class Configuration
         $this->addOption(oxNew(BaseUrl::class, $this->loader));
         $this->addOption(oxNew(CacheSuffix::class, $this->loader));
         $this->addOption(oxNew(Selector::class, $this->loader));
+        $this->addOption(oxNew(InitInstanceCallback::class, $this->loader));
     }
 
     protected function addGuiOptions(): void

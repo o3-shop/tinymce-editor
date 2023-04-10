@@ -29,4 +29,9 @@ class Utils
     {
         return '"'.addslashes($string).'"';
     }
+
+    public function minifyJS(string $js): string
+    {
+        return trim((string) preg_replace('!\s+!', ' ', $js));
+    }
 }
