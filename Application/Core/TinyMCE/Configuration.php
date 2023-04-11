@@ -44,6 +44,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\Promotion;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Protect;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\QuickbarsInsertToolbar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\RelativeUrls;
+use O3\TinyMCE\Application\Core\TinyMCE\Options\Resize;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Selector;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Setup;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Skin;
@@ -127,6 +128,7 @@ class Configuration
         $this->addOption(oxNew(Menubar::class, $this->loader));
         $this->addOption(oxNew(ToolbarSticky::class, $this->loader));
         $this->addOption(oxNew(ToolbarMode::class, $this->loader));
+        $this->addOption(oxNew(Resize::class, $this->loader));
     }
 
     protected function addContentAppearance(): void
