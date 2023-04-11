@@ -34,13 +34,59 @@
 <script type="text/javascript" src='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/js/jquery-dateFormat.min.js")}]'></script>
 </head>
 <body>
+<style>
+    #pnlDirList .selected,
+    #pnlFileList .selected,
+    #pnlFileList .selected:hover {
+        background-color: #cce2fa !important;
+        color: #222f3e;
+    }
+    a {
+        color: #222f3e;
+    }
+    .actions.tox {
+        border-bottom: 1px solid #eeeeee;
+        min-height: 66px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+    .tox .tox-tbtn {
+        border: 0;
+        border-radius: 3px;
+        box-shadow: none;
+        color: #222f3e;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        margin: 6px 1px 5px 0;
+        outline: 0;
+        overflow: hidden;
+        text-transform: none;
+        background-color: white;
+        padding-left: 22px;
+    }
+    .tox .tox-tbtn--select {
+        margin: 6px 1px 5px 0;
+        padding: 0 4px;
+    }
+    .tox .tox-tbtn--bespoke {
+        background: #f7f7f7;
+    }
+    .tox .tox-tbtn:hover,
+    .tox .tox-tbtn.selected {
+        background-color: #cce2fa !important;
+        border: 0;
+        box-shadow: none;
+        color: #222f3e;
+    }
+</style>
 <table cellpadding="0" cellspacing="0" id="wraper">
   <tr>
    <td valign="top" class="pnlDirs" id="dirActions">
-    <div class="actions">
-      <input type="button" id="btnAddDir" value="Create" title="Create new directory" onclick="addDir()" data-lang-v="CreateDir" data-lang-t="T_CreateDir" />
-      <input type="button" id="btnRenameDir" value="Rename" title="Rename directory" onclick="renameDir()" data-lang-v="RenameDir" data-lang-t="T_RenameDir" />
-      <input type="button" id="btnDeleteDir" value="Delete" title="Delete selected directory" onclick="deleteDir()" data-lang-v="DeleteDir" data-lang-t="T_DeleteDir" />
+    <div class="actions tox">
+      <input type="button" class="tox-tbtn" id="btnAddDir" value="Create" title="Create new directory" onclick="addDir()" data-lang-v="CreateDir" data-lang-t="T_CreateDir" />
+      <input type="button" class="tox-tbtn" id="btnRenameDir" value="Rename" title="Rename directory" onclick="renameDir()" data-lang-v="RenameDir" data-lang-t="T_RenameDir" />
+      <input type="button" class="tox-tbtn" id="btnDeleteDir" value="Delete" title="Delete selected directory" onclick="deleteDir()" data-lang-v="DeleteDir" data-lang-t="T_DeleteDir" />
     </div>
     <div id="pnlLoadingDirs">
        <span>Loading directories...</span><br>
@@ -53,16 +99,16 @@
    <td valign="top" id="fileActions">
    <input type="hidden" id="hdViewType" value="list">
    <input type="hidden" id="hdOrder" value="asc">
-    <div class="actions">
-      <input type="button" id="btnAddFile" value="Add file" title="Upload files" onclick="addFileClick()" data-lang-v="AddFile" data-lang-t="T_AddFile" />
-      <input type="button" id="btnPreviewFile" value="Preview" title="Preview selected file" onclick="previewFile()" data-lang-v="Preview" data-lang-t="T_Preview" />
-      <input type="button" id="btnRenameFile" value="Rename" title="Rename selected file" onclick="renameFile()" data-lang-v="RenameFile" data-lang-t="T_RenameFile" />
-      <input type="button" id="btnDownloadFile" value="Download" title="Download selected file" onclick="downloadFile()" data-lang-v="DownloadFile" data-lang-t="T_DownloadFile" />
-      <input type="button" id="btnDeleteFile" value="Delete" title="Delete selected file" onclick="deleteFile()" data-lang-v="DeleteFile" data-lang-t="T_DeleteFile" />
-      <input type="button" id="btnSelectFile" value="Select" title="Select highlighted file" onclick="setFile()" data-lang-v="SelectFile" data-lang-t="T_SelectFile" />
+    <div class="actions tox">
+        <input type="button" class="tox-tbtn" id="btnAddFile" value="Add file" title="Upload files" onclick="addFileClick()" data-lang-v="AddFile" data-lang-t="T_AddFile" />
+        <input type="button" class="tox-tbtn" id="btnPreviewFile" value="Preview" title="Preview selected file" onclick="previewFile()" data-lang-v="Preview" data-lang-t="T_Preview" />
+        <input type="button" class="tox-tbtn" id="btnRenameFile" value="Rename" title="Rename selected file" onclick="renameFile()" data-lang-v="RenameFile" data-lang-t="T_RenameFile" />
+        <input type="button" class="tox-tbtn" id="btnDownloadFile" value="Download" title="Download selected file" onclick="downloadFile()" data-lang-v="DownloadFile" data-lang-t="T_DownloadFile" />
+        <input type="button" class="tox-tbtn" id="btnDeleteFile" value="Delete" title="Delete selected file" onclick="deleteFile()" data-lang-v="DeleteFile" data-lang-t="T_DeleteFile" />
+        <input type="button" class="tox-tbtn" id="btnSelectFile" value="Select" title="Select highlighted file" onclick="setFile()" data-lang-v="SelectFile" data-lang-t="T_SelectFile" />
       <br>
       <span data-lang="OrderBy">Order by</span>:
-      <select id="ddlOrder" onchange="sortFiles()">
+      <select id="ddlOrder" class="tox-tbtn tox-tbtn--select tox-tbtn--bespoke" onchange="sortFiles()">
         <option value="name" data-lang="Name_asc">&uarr;&nbsp;&nbsp;Name</option>
         <option value="size" data-lang="Size_asc">&uarr;&nbsp;&nbsp;Size</option>
         <option value="time" data-lang="Date_asc">&uarr;&nbsp;&nbsp;Date</option>
@@ -70,8 +116,8 @@
         <option value="size_desc" data-lang="Size_desc">&darr;&nbsp;&nbsp;Size</option>
         <option value="time_desc" data-lang="Date_desc">&darr;&nbsp;&nbsp;Date</option>
       </select>&nbsp;&nbsp;
-      <input type="button" id="btnListView" class="btnView" value=" " title="List view" onclick="switchView('list')" data-lang-t="T_ListView" />
-      <input type="button" id="btnThumbView" class="btnView" value=" " title="Thumbnails view" onclick="switchView('thumb')" data-lang-t="T_ThumbsView" />&nbsp;&nbsp;
+      <input type="button" id="btnListView" class="btnView tox-tbtn" value=" " title="List view" onclick="switchView('list')" data-lang-t="T_ListView" />
+      <input type="button" id="btnThumbView" class="btnView tox-tbtn" value=" " title="Thumbnails view" onclick="switchView('thumb')" data-lang-t="T_ThumbsView" />&nbsp;&nbsp;
       <input type="text" id="txtSearch" onkeyup="filterFiles()" onchange="filterFiles()" />
     </div>
     <div class="pnlFiles">
@@ -93,7 +139,7 @@
   </tr>
   <tr>
     <td class="bottomLine">
-      &nbsp;&nbsp;&nbsp;<a href="http://www.roxyfileman.com" target="_blank">&copy; 2013 - <span id="copyYear"></span> RoxyFileman</a>
+      &nbsp;&nbsp;&nbsp;&copy; <span id="copyYear"></span> RoxyFileman, <a href="http://www.o3-shop.com" target="_blank">O3-Shop</a>
     </td>
     <td class="bottomLine">
       <div id="pnlStatus">Status bar</div>
