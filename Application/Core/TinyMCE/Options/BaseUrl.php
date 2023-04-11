@@ -39,7 +39,7 @@ class BaseUrl extends AbstractOption
     /**
      * @return bool
      */
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

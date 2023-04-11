@@ -32,7 +32,7 @@ class ToolbarMode extends AbstractOption
         return 'sliding';
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

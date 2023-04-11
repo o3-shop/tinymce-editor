@@ -34,7 +34,7 @@ class DocumentBaseUrl extends AbstractOption
         return Registry::getConfig()->getActiveView()->getViewConfig()->getBaseDir();
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

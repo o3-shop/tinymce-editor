@@ -32,7 +32,7 @@ class Resize extends AbstractOption
         return 'both';
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

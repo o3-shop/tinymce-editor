@@ -33,7 +33,7 @@ interface OptionInterface
 
     public function get(): string;
 
-    public function mustQuote(): bool;
+    public function isQuoted(): bool;
 
     public function requireRegistration(): bool;
 }

@@ -36,7 +36,7 @@ class EntityEncoding extends AbstractOption
         return 'raw';
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

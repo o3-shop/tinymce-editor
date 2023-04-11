@@ -32,7 +32,7 @@ class Menubar extends AbstractOption
         return 'file edit view insert format tools table help';
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

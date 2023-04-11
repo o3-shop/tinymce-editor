@@ -47,7 +47,7 @@ class QuickbarsInsertToolbar extends AbstractOption
         */
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return $this->get() !== 'false';
     }

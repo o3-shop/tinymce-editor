@@ -83,7 +83,7 @@ class Configuration
 
         $option = $optionInstance->get();
 
-        if ($optionInstance->mustQuote()) {
+        if ($optionInstance->isQuoted()) {
             $option = (oxNew(Utils::class))->quote($option);
         }
 

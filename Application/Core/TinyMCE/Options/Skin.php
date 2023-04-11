@@ -38,7 +38,7 @@ class Skin extends AbstractOption
         return $this->darkMode ? 'oxide-dark' : 'oxide';
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

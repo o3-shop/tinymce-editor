@@ -46,7 +46,7 @@ abstract class AbstractOption implements OptionInterface
 
     abstract public function get(): string;
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return false;
     }

@@ -32,7 +32,7 @@ class MaxWidth extends AbstractOption
         return '90%';
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }

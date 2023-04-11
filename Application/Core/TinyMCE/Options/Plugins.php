@@ -47,7 +47,7 @@ class Plugins extends AbstractOption
         ));
     }
 
-    public function mustQuote(): bool
+    public function isQuoted(): bool
     {
         return true;
     }
