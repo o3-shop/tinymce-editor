@@ -21,7 +21,7 @@
 
 $sMetadataVersion = '2.1';
 $aModule = [
-    'id' => 'tinymce-editor',
+    'id' => 'o3-tinymce-editor',
     'title' => 'TinyMCE Editor',
     'description' => 'TinyMCE 6 Integration for O3-Shop',
     'thumbnail' => 'logo.png',

@@ -23,15 +23,15 @@
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<base href='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/")}]'>
+<base href='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/")}]'>
 <title>Roxy File Manager</title>
-<link href='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/css/jquery-ui-1.10.4.custom.min.css")}]' rel="stylesheet" type="text/css" />
-<link href='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/css/main.min.css")}]' rel="stylesheet" type="text/css" />
-<script type="text/javascript" src='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/js/jquery-1.11.1.min.js")}]'></script>
-<script type="text/javascript" src='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/js/jquery-ui-1.10.4.custom.min.js")}]'></script>
-<script type="text/javascript" src='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/js/custom.js")}]'></script>
-<script type="text/javascript" src='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/js/main.min.js")}]'></script>
-<script type="text/javascript" src='[{$oViewConf->getModuleUrl("tinymce-editor","Application/fileman/js/jquery-dateFormat.min.js")}]'></script>
+<link href='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/css/jquery-ui-1.10.4.custom.min.css")}]' rel="stylesheet" type="text/css" />
+<link href='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/css/main.min.css")}]' rel="stylesheet" type="text/css" />
+<script type="text/javascript" src='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/js/jquery-1.11.1.min.js")}]'></script>
+<script type="text/javascript" src='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/js/jquery-ui-1.10.4.custom.min.js")}]'></script>
+<script type="text/javascript" src='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/js/custom.js")}]'></script>
+<script type="text/javascript" src='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/js/main.min.js")}]'></script>
+<script type="text/javascript" src='[{$oViewConf->getModuleUrl("o3-tinymce-editor","Application/fileman/js/jquery-dateFormat.min.js")}]'></script>
 </head>
 <body>
 <style>

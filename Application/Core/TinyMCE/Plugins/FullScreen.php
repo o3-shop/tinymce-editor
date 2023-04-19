@@ -47,7 +47,7 @@ class FullScreen extends AbstractPlugin
     public function getScriptPath(): ?string
     {
         return Registry::getConfig()->getActiveView()->getViewConfig()->getModuleUrl(
-            'tinymce-editor',
+            'o3-tinymce-editor',
             'out/plugins/oxfullscreen/plugin.js'
         );
     }

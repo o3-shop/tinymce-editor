@@ -142,7 +142,7 @@ class Loader
         $aInclude = (array) Registry::getConfig()->getGlobalParameter('includes' . $sSuffix);
 
         $aInclude[3][] = Registry::getConfig()->getActiveView()->getViewConfig()->getModuleUrl(
-            'tinymce-editor',
+            'o3-tinymce-editor',
             'out/tinymce/tinymce.min.js'
         );
 
