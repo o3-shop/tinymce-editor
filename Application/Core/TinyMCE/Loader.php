@@ -146,14 +146,6 @@ class Loader
             'out/tinymce/tinymce.min.js'
         );
 
-        /** @var string $apiKey */
-        $apiKey = Registry::getConfig()->getConfigParam('sTinyMCE_apikey', '');
-        if (strlen(trim($apiKey))) {
-            $aInclude[3][] = "https://cdn.tiny.cloud/1/".
-                trim($apiKey).
-                "/tinymce/6/plugins.min.js";
-        }
-
         Registry::getConfig()->setGlobalParameter('includes' . $sSuffix, $aInclude);
     }
 }

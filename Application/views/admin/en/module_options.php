@@ -29,6 +29,5 @@ $aLang = [
    'HELP_SHOP_MODULE_blTinyMCE_filemanager' => 'When enabled, you can upload pictures into this directory: out/pictures/wysiwigpro/',
    'SHOP_MODULE_aTinyMCE_classes'           => '<h3>Enable TinyMCE for following backend pages:</h3><ul><li>article_main (product details)</li><li>content_main (CMS pages)</li><li>category_text (category description)</li><li>newsletter_main (newsletter)</li><li>news_text (news text)</li></ul>',
    'HELP_SHOP_MODULE_aTinyMCE_classes'      => 'if you want to use TinyMCE for your custom controllers, you need to enter their class names here.',
-   'SHOP_MODULE_sTinyMCE_apikey'            => 'optional API key from your TinyMCE registration',
    'SHOP_MODULE_GROUP_tinyMceSettings'      => 'TinyMCE Settings &amp; Plugins',
 ];

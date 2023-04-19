@@ -29,6 +29,5 @@ $aLang = [
    'HELP_SHOP_MODULE_blTinyMCE_filemanager' => 'Ist diese Option aktiv, können Bilder hochgeladen werden. Der Speicherort ist: out/pictures/wysiwigpro/',
    'SHOP_MODULE_aTinyMCE_classes'           => '<h3>TinyMCE für folgende Backend-Seiten laden:</h3><ul><li>article_main (Artikelbeschreibung)</li><li>content_main (CMS Seiten)</li><li>category_text (Kategorienbeschreibung)</li><li>newsletter_main (Newsletter)</li><li>news_text (Nachrichten-Text)</li></ul>',
    'HELP_SHOP_MODULE_aTinyMCE_classes'      => 'für die Benutzung von TinyMCE in eigenen Admin Views muss hier die entsprechende Controllerklasse eingetragen werden, dann wird für jedes Textarea je ein Editor erzeugt',
-   'SHOP_MODULE_sTinyMCE_apikey'            => 'optionaler API-Key aus Ihrer TinyMCE Registrierung',
    'SHOP_MODULE_GROUP_tinyMceSettings'      => 'TinyMCE Einstellungen &amp; Plugins',
 ];

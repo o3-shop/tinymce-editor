@@ -66,13 +66,6 @@ $aModule = [
             'type' => 'bool',
             'value' => true,
             'position' => 2,
-        ],
-        [
-            'group' => 'tinyMceMain',
-            'name' => 'sTinyMCE_apikey',
-            'type' => 'str',
-            'value' => '',
-            'position' => 3,
         ]
     ],
 ];
