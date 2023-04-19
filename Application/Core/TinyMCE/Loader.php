@@ -146,12 +146,6 @@ class Loader
             'out/tinymce/tinymce.min.js'
         );
 
-        /** @var string[] $aExtjs */
-        $aExtjs = Registry::getConfig()->getConfigParam('aTinyMCE_extjs', []);
-        foreach ($aExtjs as $js) {
-            $aInclude[3][] = $js;
-        }
-
         /** @var string $apiKey */
         $apiKey = Registry::getConfig()->getConfigParam('sTinyMCE_apikey', '');
         if (strlen(trim($apiKey))) {
