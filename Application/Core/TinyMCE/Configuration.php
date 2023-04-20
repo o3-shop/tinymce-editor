@@ -73,6 +73,7 @@ class Configuration
         $this->addUrlHandling();
         $this->addPlugins();
         $this->addToolbar();
+        $this->addCustomOptions();
     }
 
     protected function addOption(OptionInterface $optionInstance): void
@@ -88,6 +89,17 @@ class Configuration
         }
 
         $this->options[$optionInstance->getKey()] = $option;
+    }
+
+    /**
+     * @param string $optionKey
+     * @return void
+     */
+    protected function removeOption(string $optionKey): void
+    {
+        if (isset($this->options[$optionKey])) {
+            unset($this->options[$optionKey]);
+        }
     }
 
     public function getConfig(): string
@@ -165,5 +177,9 @@ class Configuration
     protected function addToolbar(): void
     {
         $this->addOption(oxNew(Toolbar::class, $this->loader));
+    }
+
+    protected function addCustomOptions(): void
+    {
     }
 }
