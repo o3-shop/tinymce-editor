@@ -89,7 +89,7 @@ function verifyPath(string $path): void
 
 function fixPath(string $path): string
 {
-    $path = $_SERVER['DOCUMENT_ROOT'] . '/' . $path;
+    $path = dirname($_SERVER['SCRIPT_FILENAME']) . '/../../../../../../' . $path;
     $path = str_replace('\\', '/', $path);
     $path = RoxyFile::FixPath($path);
     return $path;
@@ -389,7 +389,7 @@ class RoxyFile
     public static function FixPath(string $path): string
     {
         $path = (string) mb_ereg_replace('[\\\/]+', '/', $path);
-        $path = (string) mb_ereg_replace('\.\.\/', '', $path);
+        //$path = (string) mb_ereg_replace('\.\.\/', '', $path);
 
         return $path;
     }
