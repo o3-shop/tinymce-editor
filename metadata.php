@@ -19,6 +19,8 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
+use O3\TinyMCE\Application\Core\Setup\Events;
+
 $sMetadataVersion = '2.1';
 $aModule = [
     'id' => 'o3-tinymce-editor',
@@ -67,5 +69,9 @@ $aModule = [
             'value' => true,
             'position' => 2,
         ]
+    ],
+    'events'       => [
+        'onActivate'   => Events::class.'::onActivate',
+        'onDeactivate' => Events::class.'::onDeactivate'
     ],
 ];
