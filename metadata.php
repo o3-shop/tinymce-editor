@@ -19,15 +19,17 @@
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
+declare(strict_types=1);
+
 use O3\TinyMCE\Application\Core\Setup\Events;
 
 $sMetadataVersion = '2.1';
-$aModule = [
+$aModule          = [
     'id' => 'o3-tinymce-editor',
     'title' => 'TinyMCE Editor',
-    'description' => 'TinyMCE 6 Integration for O3-Shop',
+    'description' => 'TinyMCE 6 integration for O3-Shop',
     'thumbnail' => 'logo.png',
-    'version' => '1.0.0 ( 2023-04-06 )',
+    'version' => '1.0.0',
     'author' => 'O3-Shop, Marat Bedoev',
     'url' => 'https://www.o3-shop.com/',
     'extend' => [
