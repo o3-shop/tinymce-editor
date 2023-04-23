@@ -33,7 +33,7 @@
   },
   "require": {
     "php": ">=7.4",
-    "o3-shop/shop-ce": "^1.2@dev"
+    "o3-shop/shop-ce": "^1.2 || dev-dev_b-1.2"
   },
   "autoload": {
     "psr-4": {
