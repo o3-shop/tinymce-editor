@@ -23,14 +23,19 @@ declare(strict_types=1);
 
 namespace O3\TinyMCE\Application\Core\Setup;
 
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Exception\ModuleConfigurationNotFoundException;
+
 class Events
 {
     /**
      * Execute action on activate event
+     * @return void
+     * @throws ModuleConfigurationNotFoundException
      */
     public static function onActivate(): void
     {
         $actions = oxNew(Actions::class);
+        $actions->installApplyNewConfiguration();
         $actions->clearCache();
     }
 

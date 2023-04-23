@@ -25,17 +25,60 @@ namespace O3\TinyMCE\Application\Core\Setup;
 
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
+use OxidEsales\EshopCommunity\Internal\Framework\Console\CommandsProvider\ServicesCommandsProvider;
+use OxidEsales\EshopCommunity\Internal\Framework\Console\Executor;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleConfigurationDaoBridgeInterface;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ShopConfigurationDaoBridgeInterface;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\DataObject\ModuleConfiguration;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\DataObject\ModuleConfiguration\Template;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\DataObject\ModuleConfiguration\TemplateBlock;
 use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Exception\ModuleConfigurationNotFoundException;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Bridge\TemplateBlockModuleSettingHandlerBridgeInterface;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Handler\TemplateBlockModuleSettingHandler;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
 
 class Actions
 {
+    /**
+     * apply updated class extensions to yaml files
+     *
+     * @return void
+     * @throws ModuleConfigurationNotFoundException
+     */
+    public function installApplyNewConfiguration()
+    {
+        /** @var ShopConfigurationDaoBridgeInterface $shopConfiguration */
+        $shopConfiguration = ContainerFactory::getInstance()->getContainer()->get(ShopConfigurationDaoBridgeInterface::class);
+        $beforeHash = md5(serialize($shopConfiguration->get()->getModuleConfiguration('o3-tinymce-editor')));
+
+        $executor = $this->getCommandExecutor();
+
+        $add = php_sapi_name() == 'cli' ? 'source/' : (isAdmin() ? '../' : '');
+
+        $input = new ArrayInput([
+            'command' => 'oe:module:install-configuration',
+            'module-source-path'    => $add.'modules/o3-shop/tinymce-editor/'
+        ]);
+        $executor->execute($input);
+
+        $changedConfiguration =
+            md5(serialize($shopConfiguration->get()->getModuleConfiguration('o3-tinymce-editor'))) !== $beforeHash;
+
+        if ($changedConfiguration) {
+            /** @var ModuleConfigurationDaoBridgeInterface $mas */
+            $mas = ContainerFactory::getInstance()->getContainer()->get(ModuleConfigurationDaoBridgeInterface::class);
+
+            /** @var TemplateBlockModuleSettingHandler $tbsh */
+            $tbsh = ContainerFactory::getInstance()->getContainer()->get(TemplateBlockModuleSettingHandlerBridgeInterface::class);
+            $tbsh->handleOnModuleDeactivation($mas->get('o3-tinymce-editor'), Registry::getConfig()->getShopId());
+            $tbsh->handleOnModuleActivation($mas->get('o3-tinymce-editor'), Registry::getConfig()->getShopId());
+        }
+    }
+
     /**
      * clear cache
      */
@@ -109,5 +152,18 @@ class Actions
     protected function getDIContainer(): ?ContainerInterface
     {
         return ContainerFactory::getInstance()->getContainer();
+    }
+
+    /**
+     * @return Executor
+     */
+    protected function getCommandExecutor(): Executor
+    {
+        $servicesCommandsProvider = new ServicesCommandsProvider(ContainerFactory::getInstance()->getContainer());
+
+        $application = new Application();
+        $application->setAutoExit(false);
+
+        return new Executor($application, $servicesCommandsProvider);
     }
 }
