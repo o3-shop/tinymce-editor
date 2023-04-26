@@ -4,7 +4,7 @@ This module integrates the [TinyMCE WYSIWYG editor](https://www.tiny.cloud/tinym
 
 ## Usage
 
-This assumes you have O3-Shop (at least the `v1.0.0` compilation) up and running.
+This assumes you have O3-Shop (at least the `v1.2.0` compilation) up and running.
 
 ### Install
 
@@ -20,7 +20,7 @@ After requiring the module, you need to activate it, either via O3-Shop admin or
 
 Navigate to shop folder and execute the following: 
 ```bash
-$ vendor/bin/oe-console oe:module:activate tinymce-editor
+$ vendor/bin/oe-console oe:module:activate o3-tinymce-editor
 ```
 
 ### How to use
