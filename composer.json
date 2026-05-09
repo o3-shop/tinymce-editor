@@ -29,7 +29,7 @@
     }
   },
   "archive": {
-    "exclude": ["/build"]
+    "exclude": ["/build", ".next-bump"]
   },
   "require": {
     "php": ">=7.4",
