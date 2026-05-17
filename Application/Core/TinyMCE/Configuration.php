@@ -44,6 +44,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\Promotion;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Protect;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\QuickbarsInsertToolbar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\RelativeUrls;
+use O3\TinyMCE\Application\Core\TinyMCE\Options\RemoveScriptHost;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Resize;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Selector;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Setup;
@@ -162,7 +163,11 @@ class Configuration
     protected function addUrlHandling(): void
     {
         $this->addOption(oxNew(DocumentBaseUrl::class, $this->loader));
+        // RelativeUrls + RemoveScriptHost together yield root-relative
+        // URLs ("/out/pictures/..."). Either alone produces broken paths;
+        // see o3-shop/o3-shop#151 for the rationale.
         $this->addOption(oxNew(RelativeUrls::class, $this->loader));
+        $this->addOption(oxNew(RemoveScriptHost::class, $this->loader));
     }
 
     protected function addPlugins(): void
