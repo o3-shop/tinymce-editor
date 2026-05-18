@@ -14,8 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with O3-Shop.  If not, see <http://www.gnu.org/licenses/>
  *
- * @copyright  Copyright (c) 2022 Marat Bedoev, bestlife AG
- * @copyright  Copyright (c) 2023 O3-Shop (https://www.o3-shop.com)
+ * @copyright  Copyright (c) 2026 O3-Shop (https://www.o3-shop.com)
  * @license    https://www.gnu.org/licenses/gpl-3.0  GNU General Public License 3 (GPLv3)
  */
 
@@ -24,22 +23,28 @@ declare(strict_types=1);
 namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
 /**
- * Force absolute URLs in the TinyMCE output, then let RemoveScriptHost
- * strip the scheme+host to land on a root-relative path (e.g.
- * "/out/pictures/wysiwigpro/logo.png"). The earlier `relative_urls: true`
- * setting produced bare-relative paths ("out/pictures/...") which the
- * browser resolved against the current sub-path URL on storefront pages
- * — turning a perfectly fine image into a 404 on every page below the
- * shop root.
+ * Pairs with `relative_urls: false`. When TinyMCE writes an absolute URL
+ * back to the editor (e.g. via the file manager), this strips the
+ * scheme + host so the persisted attribute is root-relative
+ * ("/out/pictures/wysiwigpro/logo.png") instead of fully-qualified
+ * ("https://shop.example.com/out/pictures/wysiwigpro/logo.png").
+ *
+ * Root-relative is what the storefront needs: it resolves correctly at
+ * any URL depth (sub-path product pages, admin previews, etc.) and is
+ * portable across environments (dev/ngrok/staging/prod) without DB
+ * rewrites.
+ *
+ * `true` is already the TinyMCE default; we set it explicitly so future
+ * TinyMCE default changes can't quietly flip our URL strategy.
  *
  * Refs: o3-shop/o3-shop#151.
  */
-class RelativeUrls extends AbstractOption
+class RemoveScriptHost extends AbstractOption
 {
-    protected string $key = 'relative_urls';
+    protected string $key = 'remove_script_host';
 
     public function get(): string
     {
-        return 'false';
+        return 'true';
     }
 }
