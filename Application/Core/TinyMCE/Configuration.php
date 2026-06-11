@@ -34,6 +34,7 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\FilemanagerUrl;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ImageAdvtab;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\InitInstanceCallback;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Language;
+use O3\TinyMCE\Application\Core\TinyMCE\Options\LicenseKey;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\MaxHeight;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\MaxWidth;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Menubar;
@@ -123,6 +124,7 @@ class Configuration
      */
     protected function addIntegrateOptions(): void
     {
+        $this->addOption(oxNew(LicenseKey::class, $this->loader));
         $this->addOption(oxNew(Setup::class, $this->loader));
         $this->addOption(oxNew(BaseUrl::class, $this->loader));
         $this->addOption(oxNew(CacheSuffix::class, $this->loader));
