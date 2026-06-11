@@ -1,6 +1,6 @@
 {
   "name": "o3-shop/tinymce-editor",
-  "description": "TinyMCE 6 Integration for O3-Shop",
+  "description": "TinyMCE 7 Integration for O3-Shop",
   "type": "oxideshop-module",
   "homepage": "https://www.o3-shop.com/",
   "license": [
