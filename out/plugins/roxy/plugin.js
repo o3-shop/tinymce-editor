@@ -22,17 +22,26 @@
     const PluginManager = tinymce.util.Tools.resolve('tinymce.PluginManager');
 
     PluginManager.add('roxy', function (editor) {
-        editor.options.set('file_picker_callback', function ($callback, $value, $meta) {
-            var url = editor.options.get('filemanager_url')
-                + "&type=" + $meta.filetype
-                + '&value=' + $value
-                + '&selected=' + $value;
+        // These options are injected into the init config by the module's PHP
+        // (Options/FilemanagerUrl.php). In TinyMCE 7 custom options must be
+        // registered before they can be read with editor.options.get().
+        editor.options.register('filemanager_url', { processor: 'string', default: '' });
+        editor.options.register('filemanager_access_key', { processor: 'string', default: '' });
 
-            if (editor.options.isSet('language')) {
-                url += '&langCode=' + editor.options.get('language');
+        editor.options.set('file_picker_callback', function (callback, value, meta) {
+            let url = editor.options.get('filemanager_url')
+                + '&type=' + meta.filetype
+                + '&value=' + value
+                + '&selected=' + value;
+
+            const language = editor.options.get('language');
+            if (language) {
+                url += '&langCode=' + language;
             }
-            if (editor.options.isSet('filemanager_access_key')) {
-                url += '&akey=' + editor.options.get('filemanager_access_key');
+
+            const accessKey = editor.options.get('filemanager_access_key');
+            if (accessKey) {
+                url += '&akey=' + accessKey;
             }
 
             const instanceApi = editor.windowManager.openUrl({
@@ -40,20 +49,11 @@
                 url: url,
                 width: window.innerWidth,
                 height: window.innerHeight - 40,
-                onMessage: function(dialogApi, details) {
-                    $callback(details.content);
+                onMessage: function (dialogApi, details) {
+                    callback(details.content);
                     instanceApi.close();
                 }
             });
         });
-
-        return {
-            getMetadata: () => {
-                return {
-                    name: "Roxy Filemanager Plugin for O3-Shop",
-                    url: "https://gitlab.o3-shop.com/o3/tinymce-editor/"
-                };
-            }
-        };
     });
 }());
