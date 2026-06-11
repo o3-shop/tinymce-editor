@@ -22,7 +22,7 @@ SRC="$TMP/package"
 # Replace bundle assets. Preserve the existing langs/ packs — the npm package
 # does not ship language files, and ours are forward-compatible with 7.x.
 for item in tinymce.js tinymce.min.js tinymce.d.ts package.json bower.json \
-            composer.json CHANGELOG.md README.md license.txt \
+            composer.json CHANGELOG.md README.md license.md license.txt \
             plugins skins themes models icons; do
     rm -rf "${OUT:?}/$item"
     if [ -e "$SRC/$item" ]; then
