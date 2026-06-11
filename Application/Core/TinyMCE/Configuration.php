@@ -48,7 +48,6 @@ use O3\TinyMCE\Application\Core\TinyMCE\Options\RelativeUrls;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\RemoveScriptHost;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Resize;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Selector;
-use O3\TinyMCE\Application\Core\TinyMCE\Options\Setup;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Skin;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\Toolbar;
 use O3\TinyMCE\Application\Core\TinyMCE\Options\ToolbarMode;
@@ -125,7 +124,6 @@ class Configuration
     protected function addIntegrateOptions(): void
     {
         $this->addOption(oxNew(LicenseKey::class, $this->loader));
-        $this->addOption(oxNew(Setup::class, $this->loader));
         $this->addOption(oxNew(BaseUrl::class, $this->loader));
         $this->addOption(oxNew(CacheSuffix::class, $this->loader));
         $this->addOption(oxNew(Selector::class, $this->loader));
