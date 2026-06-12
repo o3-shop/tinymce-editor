@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Dropped the `fullpage` and `legacyoutput` plugin classes; both plugins were
   removed from TinyMCE in 6.0 and had no effect (they produced 404s on the
   newsletter editor).
+- Dropped the `max_height` / `max_width` options. They were set to `'90%'`,
+  which TinyMCE's numeric option processor rejects — inert in 6.x, but 7.x
+  logs a console warning. Removing them preserves the previous (uncapped)
+  behaviour without the warning.
 
 ## [v1.1.0] - 2026-05-17
 
