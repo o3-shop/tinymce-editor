@@ -6,6 +6,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## unreleased
 
+## [v2.0.0] - 2026-06-11
+
+### Security
+- Upgraded the bundled TinyMCE editor from 6.4.1 to 7.9.3, fixing three HIGH
+  XSS vulnerabilities: CVE-2026-47759 (data-mce- prefixed src/href/style),
+  CVE-2026-47761 (media plugin data-mce-object injection), and
+  CVE-2026-47762 (mce:protected comments). See o3-shop/o3-shop#194.
+
+### Changed
+- TinyMCE 7 requires a license key for self-hosted use; the editor now sends
+  `license_key: 'gpl'`. The bundled editor is licensed GPL-2.0-or-later, which
+  is compatible with this module's GPL-3.0 license.
+- `roxy` file-picker plugin ported from the removed `editor.settings` API to
+  `editor.options` (registers `filemanager_url` / `filemanager_access_key`).
+- `build/update.sh` now fetches a pinned TinyMCE release from npm reproducibly.
+
+### Removed
+- Dropped the `fullpage` and `legacyoutput` plugin classes; both plugins were
+  removed from TinyMCE in 6.0 and had no effect (they produced 404s on the
+  newsletter editor).
+- Dropped the `max_height` / `max_width` options. They were set to `'90%'`,
+  which TinyMCE's numeric option processor rejects — inert in 6.x, but 7.x
+  logs a console warning. Removing them preserves the previous (uncapped)
+  behaviour without the warning.
+
 ## [v1.1.0] - 2026-05-17
 
 ### Fixed

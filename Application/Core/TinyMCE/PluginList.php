@@ -28,10 +28,8 @@ use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Autolink;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\AutoResize;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Charmap;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Code;
-use O3\TinyMCE\Application\Core\TinyMCE\Plugins\FullPage;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\FullScreen;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Image;
-use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Legacyoutput;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Link;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Lists;
 use O3\TinyMCE\Application\Core\TinyMCE\Plugins\Media;
@@ -59,9 +57,7 @@ class PluginList
             'autoresize'    => oxNew(AutoResize::class),
             'charmap'       => oxNew(Charmap::class),
             'code'          => oxNew(Code::class),
-            'fullpage'      => oxNew(FullPage::class),
             'image'         => oxNew(Image::class),
-            'legacyoutput'  => oxNew(Legacyoutput::class),
             'link'          => oxNew(Link::class),
             'lists'         => oxNew(Lists::class),
             'media'         => oxNew(Media::class),

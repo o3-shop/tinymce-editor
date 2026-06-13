@@ -21,19 +21,19 @@
 
 declare(strict_types=1);
 
-namespace O3\TinyMCE\Application\Core\TinyMCE\Plugins;
+namespace O3\TinyMCE\Application\Core\TinyMCE\Options;
 
-use OxidEsales\Eshop\Core\Registry;
-
-class Legacyoutput extends AbstractPlugin
+class LicenseKey extends AbstractOption
 {
-    public function getPluginName(): string
+    protected string $key = 'license_key';
+
+    public function get(): string
     {
-        return 'legacyoutput';
+        return 'gpl';
     }
 
-    public function requireRegistration(): bool
+    public function isQuoted(): bool
     {
-        return strtolower(Registry::getConfig()->getActiveView()->getClassKey()) === 'newsletter_main';
+        return true;
     }
 }
