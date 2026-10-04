@@ -33,7 +33,7 @@ class CacheSuffix extends AbstractOption
 
     public function get(): string
     {
-        return '?v='.date('Ymd');
+        return '?v=' . date('Ymd');
     }
 
     public function isQuoted(): bool

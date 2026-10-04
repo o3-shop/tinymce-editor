@@ -37,16 +37,16 @@ class Language extends AbstractOption
         $oLang = $this->loader->getLanguage();
 
         $aLang = [
-            "cs" => "cs",
-            "da" => "da",
-            "de" => "de",
-            "es" => "es_419",
-            "fr" => "fr_FR",
-            "it" => "it_IT",
-            "nl" => "nl",
-            "ru" => "ru",
+            'cs' => 'cs',
+            'da' => 'da',
+            'de' => 'de',
+            'es' => 'es_419',
+            'fr' => 'fr_FR',
+            'it' => 'it_IT',
+            'nl' => 'nl',
+            'ru' => 'ru',
         ];
-        return $aLang[ $oLang->getLanguageAbbr((int) $oLang->getTplLanguage()) ] ?? "en";
+        return $aLang[ $oLang->getLanguageAbbr((int) $oLang->getTplLanguage()) ] ?? 'en';
     }
 
     public function isQuoted(): bool

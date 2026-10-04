@@ -135,7 +135,7 @@ class Toolbar extends AbstractOption
             )
         );
 
-        return '["'.implode('", "', $list).'"]';
+        return '["' . implode('", "', $list) . '"]';
     }
 
     public function isQuoted(): bool

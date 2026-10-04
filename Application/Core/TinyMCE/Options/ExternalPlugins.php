@@ -38,21 +38,21 @@ class ExternalPlugins extends AbstractOption
         $list = implode(
             ', ',
             array_filter(
-            array_map(
-                function (PluginInterface $plugin) {
-                    return $plugin->getScriptPath() ? implode(
-                        ':',
-                        [
-                            (oxNew(Utils::class))->quote($plugin->getPluginName()),
-                            (oxNew(Utils::class))->quote($plugin->getScriptPath()),
-                        ]
-                    ) : null;
-                },
-                $pluginList->get()
+                array_map(
+                    function (PluginInterface $plugin) {
+                        return $plugin->getScriptPath() ? implode(
+                            ':',
+                            [
+                                (oxNew(Utils::class))->quote($plugin->getPluginName()),
+                                (oxNew(Utils::class))->quote($plugin->getScriptPath()),
+                            ]
+                        ) : null;
+                    },
+                    $pluginList->get()
+                )
             )
-        )
         );
 
-        return '{ '.$list.' }';
+        return '{ ' . $list . ' }';
     }
 }

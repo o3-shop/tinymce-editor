@@ -1,4 +1,5 @@
 <?php
+
 /*
   RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
   Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -331,7 +332,7 @@ class RoxyFile
             $name = mb_substr($name, 0, 32);
         }
         $str = str_replace('.php', '', $str);
-        $str = (string) mb_ereg_replace("[^\\w]", $sep, $name);
+        $str = (string) mb_ereg_replace('[^\\w]', $sep, $name);
 
         $str = (string) mb_ereg_replace("$sep+", $sep, $str) . ($ext ? '.' . $ext : '');
 
@@ -486,7 +487,7 @@ class RoxyImage
     public static function SetAlpha($img, string $path)
     {
         $ext = RoxyFile::GetExtension(basename($path));
-        if ($ext == "gif" || $ext == "png") {
+        if ($ext == 'gif' || $ext == 'png') {
             imagecolortransparent($img, (int) imagecolorallocatealpha($img, 0, 0, 0, 127));
             imagealphablending($img, false);
             imagesavealpha($img, true);

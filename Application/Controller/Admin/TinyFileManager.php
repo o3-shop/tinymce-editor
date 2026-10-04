@@ -27,5 +27,5 @@ use OxidEsales\Eshop\Application\Controller\Admin\AdminController;
 
 class TinyFileManager extends AdminController
 {
-    protected $_sThisTemplate = "TinyFilemanager.tpl";
+    protected $_sThisTemplate = 'TinyFilemanager.tpl';
 }

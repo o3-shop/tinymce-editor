@@ -52,6 +52,6 @@ class Roxy extends AbstractPlugin
 
     public function requireScript(): bool
     {
-        return (bool) Registry::getConfig()->getConfigParam("blTinyMCE_filemanager");
+        return (bool) Registry::getConfig()->getConfigParam('blTinyMCE_filemanager');
     }
 }

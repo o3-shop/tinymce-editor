@@ -36,14 +36,14 @@ class Plugins extends AbstractOption
 
         return implode(' ', array_filter(
             array_map(
-                    function (PluginInterface $plugin) {
+                function (PluginInterface $plugin) {
                     return $plugin->requireRegistration() ?
                         $plugin->getPluginName() :
                         null
                     ;
                 },
-                    $pluginList->get()
-                )
+                $pluginList->get()
+            )
         ));
     }
 

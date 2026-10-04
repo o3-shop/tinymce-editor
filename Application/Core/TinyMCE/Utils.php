@@ -27,7 +27,7 @@ class Utils
 {
     public function quote(string $string): string
     {
-        return '"'.addslashes($string).'"';
+        return '"' . addslashes($string) . '"';
     }
 
     public function minifyJS(string $js): string

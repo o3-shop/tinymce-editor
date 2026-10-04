@@ -24,7 +24,7 @@ declare(strict_types=1);
 use O3\TinyMCE\Application\Core\Setup\Events;
 
 $sMetadataVersion = '2.1';
-$aModule          = [
+$aModule = [
     'id' => 'o3-tinymce-editor',
     'title' => 'TinyMCE Editor',
     'description' => 'TinyMCE 7 integration for O3-Shop',
@@ -56,11 +56,11 @@ $aModule          = [
             'name' => 'aTinyMCE_classes',
             'type' => 'arr',
             'value' => [
-                "article_main",
-                "category_text",
-                "content_main",
-                "newsletter_main",
-                "news_text",
+                'article_main',
+                'category_text',
+                'content_main',
+                'newsletter_main',
+                'news_text',
             ],
             'position' => 0,
         ],
@@ -70,10 +70,10 @@ $aModule          = [
             'type' => 'bool',
             'value' => true,
             'position' => 2,
-        ]
+        ],
     ],
     'events'       => [
-        'onActivate'   => Events::class.'::onActivate',
-        'onDeactivate' => Events::class.'::onDeactivate'
+        'onActivate'   => Events::class . '::onActivate',
+        'onDeactivate' => Events::class . '::onDeactivate',
     ],
 ];

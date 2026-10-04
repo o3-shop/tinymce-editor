@@ -61,7 +61,7 @@ class Actions
 
         $input = new ArrayInput([
             'command' => 'oe:module:install-configuration',
-            'module-source-path'    => $add.'modules/o3-shop/tinymce-editor/'
+            'module-source-path'    => $add . 'modules/o3-shop/tinymce-editor/',
         ]);
         $executor->execute($input);
 

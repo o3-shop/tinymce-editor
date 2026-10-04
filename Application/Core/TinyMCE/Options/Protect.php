@@ -36,6 +36,6 @@ class Protect extends AbstractOption
             '/\{\#(.*)\#\}/gm', // Allow TWIG comment codes  {#foobar#}
         ];
 
-        return '[ '.implode(', ', $protect).' ]';
+        return '[ ' . implode(', ', $protect) . ' ]';
     }
 }

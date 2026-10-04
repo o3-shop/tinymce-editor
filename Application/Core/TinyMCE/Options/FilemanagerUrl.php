@@ -36,13 +36,13 @@ class FilemanagerUrl extends AbstractOption
     public function get(): string
     {
         /** @var string $sFilemanagerKey */
-        $sFilemanagerKey = md5_file(Registry::getConfig()->getConfigParam("sShopDir")."/config.inc.php");
-        Registry::get(UtilsServer::class)->setOxCookie("filemanagerkey", $sFilemanagerKey);
+        $sFilemanagerKey = md5_file(Registry::getConfig()->getConfigParam('sShopDir') . '/config.inc.php');
+        Registry::get(UtilsServer::class)->setOxCookie('filemanagerkey', $sFilemanagerKey);
 
         return str_replace(
             '&amp;',
             '&',
-            Registry::getConfig()->getActiveView()->getViewConfig()->getSslSelfLink()."cl=tinyfilemanager"
+            Registry::getConfig()->getActiveView()->getViewConfig()->getSslSelfLink() . 'cl=tinyfilemanager'
         );
     }
 
@@ -56,6 +56,6 @@ class FilemanagerUrl extends AbstractOption
      */
     public function requireRegistration(): bool
     {
-        return (bool) $this->loader->getShopConfig()->getConfigParam("blTinyMCE_filemanager");
+        return (bool) $this->loader->getShopConfig()->getConfigParam('blTinyMCE_filemanager');
     }
 }

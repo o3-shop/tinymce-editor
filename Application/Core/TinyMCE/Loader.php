@@ -73,7 +73,7 @@ class Loader
     protected function isEnabledForCurrentController(): bool
     {
         /** @var string[] $aEnabledClasses */
-        $aEnabledClasses = $this->getShopConfig()->getConfigParam("aTinyMCE_classes", []);
+        $aEnabledClasses = $this->getShopConfig()->getConfigParam('aTinyMCE_classes', []);
 
         return in_array($this->getShopConfig()->getActiveView()->getClassKey(), $aEnabledClasses);
     }
@@ -84,7 +84,7 @@ class Loader
     protected function contentIsPlain(): bool
     {
         /** @var BaseModel|Content $oEditObject */
-        $oEditObject = $this->getShopConfig()->getActiveView()->getViewDataElement("edit");
+        $oEditObject = $this->getShopConfig()->getActiveView()->getViewDataElement('edit');
         return $oEditObject instanceof Content && $oEditObject->isPlain();
     }
 
@@ -111,15 +111,15 @@ class Loader
      */
     protected function registerScripts(Configuration $configuration): void
     {
-        $sCopyLongDescFromTinyMCE = file_get_contents(__DIR__.'/../../../out/scripts/copyLongDesc.js');
-        $sUrlConverter = file_get_contents(__DIR__.'/../../../out/scripts/urlConverter.js');
+        $sCopyLongDescFromTinyMCE = file_get_contents(__DIR__ . '/../../../out/scripts/copyLongDesc.js');
+        $sUrlConverter = file_get_contents(__DIR__ . '/../../../out/scripts/urlConverter.js');
         $sInit = str_replace(
             "'CONFIG':'VALUES'",
             $configuration->getConfig(),
-            (string) file_get_contents(__DIR__.'/../../../out/scripts/init.js')
+            (string) file_get_contents(__DIR__ . '/../../../out/scripts/init.js')
         );
         $smarty = Registry::getUtilsView()->getSmarty();
-        $sSufix = ($smarty->_tpl_vars["__oxid_include_dynamic"]) ? '_dynamic' : '';
+        $sSufix = ($smarty->_tpl_vars['__oxid_include_dynamic']) ? '_dynamic' : '';
 
         $aScript = (array) Registry::getConfig()->getGlobalParameter('scripts' . $sSufix);
         $aScript[] = $sCopyLongDescFromTinyMCE;
@@ -136,7 +136,7 @@ class Loader
     protected function registerIncludes(): void
     {
         $smarty = Registry::getUtilsView()->getSmarty();
-        $sSuffix = ($smarty->_tpl_vars["__oxid_include_dynamic"]) ? '_dynamic' : '';
+        $sSuffix = ($smarty->_tpl_vars['__oxid_include_dynamic']) ? '_dynamic' : '';
 
         /** @var array<int, string[]> $aInclude */
         $aInclude = (array) Registry::getConfig()->getGlobalParameter('includes' . $sSuffix);

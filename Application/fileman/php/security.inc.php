@@ -1,4 +1,5 @@
 <?php
+
 /*
   RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
   Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -23,7 +24,7 @@
 function checkAccess(string $action): void
 {
     unset($action);
-    if ($_COOKIE['filemanagerkey'] !== md5_file("../../../../../../config.inc.php")) {
+    if ($_COOKIE['filemanagerkey'] !== md5_file('../../../../../../config.inc.php')) {
         die('nice try, noob.');
     }
 }

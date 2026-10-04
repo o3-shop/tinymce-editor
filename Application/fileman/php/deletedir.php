@@ -1,4 +1,5 @@
 <?php
+
 /*
   RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
   Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -32,7 +33,7 @@ verifyPath($path);
 if (is_dir(fixPath($path))) {
     if (fixPath($path . '/') == fixPath(getFilesPath() . '/')) {
         echo getErrorRes(t('E_CannotDeleteRoot'));
-    } elseif (count((array) glob(fixPath($path) . "/*"))) {
+    } elseif (count((array) glob(fixPath($path) . '/*'))) {
         echo getErrorRes(t('E_DeleteNonEmpty'));
     } elseif (rmdir(fixPath($path))) {
         echo getSuccessRes();
